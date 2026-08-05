@@ -1,0 +1,4 @@
+﻿[submodule "my-ai"]
+	path = my-ai
+	url = https://github.com/YOUR_ORG/my-ai.git
+	ignore = all
