@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>示意欄位</mat-label>
+    <input matInput [(ngModel)]="inputText" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="close()">取消</button>
+  <button mat-flat-button color="primary" (click)="confirm()">確定</button>
+</mat-dialog-actions>

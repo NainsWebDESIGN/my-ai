@@ -1,0 +1,32 @@
+<app-search-option-layout>
+  <ng-container search>
+    <table mat-table [dataSource]="dataSource" class="w-100">
+      <ng-container matColumnDef="key1">
+        <th mat-header-cell *matHeaderCellDef>Key 1</th>
+        <td mat-cell *matCellDef="let row">{{ row.key1 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="key2">
+        <th mat-header-cell *matHeaderCellDef>Key 2</th>
+        <td mat-cell *matCellDef="let row">{{ row.key2 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="key3">
+        <th mat-header-cell *matHeaderCellDef>Key 3</th>
+        <td mat-cell *matCellDef="let row">{{ row.key3 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="toast">
+        <th mat-header-cell *matHeaderCellDef>範例Toast</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-flat-button color="primary" (click)="showToast()">範例Toast</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="modal">
+        <th mat-header-cell *matHeaderCellDef>範例彈窗</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-flat-button color="primary" (click)="openModal()">開啟範例 modal</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-container>
+</app-search-option-layout>

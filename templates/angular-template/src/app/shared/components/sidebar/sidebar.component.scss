@@ -1,0 +1,32 @@
+.app-shell { height: 100vh; }
+
+.sidebar { width: 260px; }
+
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  .brand-title { font-weight: bold; font-size: 18px; }
+  .spacer { flex: 1; }
+}
+
+.nav-group-header {
+  font-weight: 600;
+  .expand-icon { margin-left: auto; }
+}
+
+.nav-sub-item {
+  padding-left: 48px !important;
+  font-size: 14px;
+  &.active-link { background: rgba(0,0,0,.08); }
+}
+
+.main-content {
+  height: 100vh;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.dark-theme .main-content {
+  background: #121212;
+  color: #fff;
+}

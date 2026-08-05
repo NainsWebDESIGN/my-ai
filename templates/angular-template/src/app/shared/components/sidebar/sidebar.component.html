@@ -1,0 +1,36 @@
+<mat-sidenav-container class="app-shell">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <mat-toolbar color="primary" class="toolbar-brand">
+      <span class="brand-title">Review Tools</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="toggleTheme()" matTooltip="切換UI主題">
+        <mat-icon>{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <ng-container *ngFor="let group of sidebarList">
+        <mat-list-item (click)="toggleGroup(group.name)" class="nav-group-header">
+          <mat-icon matListItemIcon>{{ group.icon }}</mat-icon>
+          <span matListItemTitle>{{ group.name }}</span>
+          <mat-icon class="expand-icon">{{ isGroupOpen(group.name) ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </mat-list-item>
+
+        <div *ngIf="isGroupOpen(group.name)">
+          <mat-list-item
+            *ngFor="let sub of group.subList"
+            [routerLink]="sub.path"
+            routerLinkActive="active-link"
+            class="nav-sub-item"
+          >
+            <span matListItemTitle>{{ sub.name }}</span>
+          </mat-list-item>
+        </div>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
