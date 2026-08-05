@@ -5,14 +5,23 @@
 
 ### SubModules
 
-1. 新建資料夾時
+<details>
 
-- 終端機先交給 Git 託管(`git init`)
-- 指令`git submodule add ${Clone HTTPS}`加入子模組
+<summary>新建資料夾時</summary>
 
-2. 已有專案時
+終端機先交給 Git 託管(`git init`)
 
-- 新增 `.gitmodules`，並寫入:
+指令`git submodule add ${Clone HTTPS}`加入子模組
+
+</details>
+
+<details>
+
+<details>
+
+<summary>已有專案時</summary>
+
+新增 `.gitmodules`，並寫入:
 
 ```ini
 [submodule "my-ai"]
@@ -21,10 +30,14 @@
     ignore = all
 ```
 
-- 終端更新子模組狀態`git submodule sync`
-- 指令加入子模組`git submodule update --init --recursive`
+終端更新子模組狀態`git submodule sync`
+指令加入子模組`git submodule update --init --recursive`
 
-3.  將`.clinerule.md` 拖到外層根目錄並依照使用的 Agent 更名
+</details>
+
+<details>
+
+將`.clinerule.md` 拖到外層根目錄並依照使用的 Agent 更名
 
 ## 結構
 
