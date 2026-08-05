@@ -3,7 +3,7 @@
 - 前端專用的 AI 輔助開發規範倉庫（submodule）。同時支援 **Vue / Nuxt** 與 **Angular** 兩種前端框架。作為專案的 `my-ai/` 子模組使用。
 - [參考 aidata](https://git.zbdigital.net/architecture/aidata.git)
 
-### SubModules
+### my-ai Init
 
 <details>
 
