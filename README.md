@@ -1,14 +1,13 @@
 ### my-ai
 
 - 前端專用的 AI 輔助開發規範倉庫（submodule）。同時支援 **Vue / Nuxt** 與 **Angular** 兩種前端框架。作為專案的 `my-ai/` 子模組使用。
-- [參考](https://git.zbdigital.net/architecture/aidata.git)
-- [RuleAI](https://github.com/NainsWebDESIGN/rulesAI.git)
+- [參考 aidata](https://git.zbdigital.net/architecture/aidata.git)
 
 ### SubModules
 
-1. 新增 `.gitmodules` 並加入:
+1. 新建資料夾，終端機先交給 Git 託管(`git init`)，並用指令`git submodule add ${Clone HTTPS}`加入子模組
 
-2.
+2. 已有專案，新增 `.gitmodules`，並寫入:
 
 ```ini
 [submodule "my-ai"]
@@ -17,8 +16,7 @@
 	ignore = all
 ```
 
-3. 若非第一次導入子模組，先以`git submodule sync`指令更新
-4. 終端跑`git submodule update --init --recursive`
+接著終端更新子模組狀態`git submodule sync`，在加入子模組`git submodule update --init --recursive`
 
 ## 結構
 
