@@ -13,16 +13,14 @@
 2. 已有專案時
 
 - 新增 `.gitmodules`，並寫入:
-- ```ini
 
-  ```
-- [submodule "my-ai"]
--     path = my-ai
--     url = https://github.com/NainsWebDESIGN/my-ai.git
--     ignore = all
-- ```
+```ini
+[submodule "my-ai"]
+    path = my-ai
+    url = https://github.com/NainsWebDESIGN/my-ai.git
+    ignore = all
+```
 
-  ```
 - 終端更新子模組狀態`git submodule sync`
 - 指令加入子模組`git submodule update --init --recursive`
 
