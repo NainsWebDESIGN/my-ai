@@ -12,7 +12,6 @@
 ## 核心原則
 
 - 必須先確認目標 folder、repo 名稱與 repo 類型，未確認 repo 類型前不得自行猜測 template。
-- 不得詢問 GitLab 帳號密碼；認證只能使用 SSH、`glab auth` 或 `GITLAB_TOKEN`。
 - 不得覆蓋非空資料夾中的既有檔案，除非使用者明確同意。
 - 不得自行切換分支、建立分支或刪除目標資料夾內容。
 - 修改目標 repo code / config 前，必須套用 `my-ai/coding-rules.md` 的 Code 修改前 Branch Gate。
@@ -45,13 +44,12 @@
 一次只問必要問題，避免一次丟太多選項。建議順序：
 
 1. 目標 folder 絕對路徑。
-2. repo 名稱 / GitLab project name。
+2. repo 名稱。
 3. repo 類型（必須從上方 template 對應表選一個）。
 4. **若 repo 類型為 `frontend-nuxt-tools` 或 `frontend-angular`**：詢問設計大類與站台（見「前端設計範本」）；可選「跳過」。
 5. 若目標 folder 不存在：詢問是否建立 folder。
 6. 若目標 folder 存在且非空、不是 git repo：詢問是否要在此 folder 初始化 repo。
-7. 若需要建立 GitLab repo：詢問 GitLab namespace / group path 與 visibility。
-8. 若需要 namespace / serviceName 替換：詢問明確替換規則；未提供則 template 原樣複製。
+7. 若需要 namespace / serviceName 替換：詢問明確替換規則；未提供則 template 原樣複製。
 
 ---
 
@@ -65,27 +63,9 @@
 | folder 存在且空 | 可初始化或 clone |
 | folder 存在且非空、無 `.git` | 問使用者是否在此 folder 初始化 repo；不得直接覆蓋 |
 | folder 有 `.git` 且有 `origin` | 直接使用既有 repo |
-| folder 有 `.git` 但無 `origin` | 問是否建立 / 綁定 GitLab remote |
+| folder 有 `.git` 但無 `origin` | 問是否綁定 remote |
 
 「有 git clone」定義為：有 `.git` 且 `git remote get-url origin` 成功。
-
----
-
-## GitLab Repo 建立規則
-
-建立遠端 repo 前，先確認是否已有 remote project。
-
-認證優先順序：
-1. SSH：`ssh -T git@git.zbdigital.net`
-2. GitLab CLI：`glab auth status`
-3. Token：環境變數 `GITLAB_TOKEN`
-
-禁止：
-- 禁止在 chat 中要求使用者輸入 GitLab 密碼。
-- 禁止把 token 寫入檔案或 commit。
-- 禁止在權限不足時重試破壞性操作。
-
-若無可用認證，請使用者先完成 SSH / glab / token 設定，或先在 GitLab 建 repo 後提供 remote URL。
 
 ---
 
@@ -100,7 +80,7 @@
 特殊檔案處理：
 - `.cursor/`、`CLAUDE.md`、`AGENTS.md`：一律以 `my-ai/generalrules` 複製結果為準。若 template 內也有同路徑檔案，不需詢問，強制覆蓋為 generalrules 版本。
 - `.gitignore`：合併，不覆蓋。
-- `.gitmodules`：合併，不覆蓋；`aidata` submodule 區塊必須包含 `ignore = all`。
+- `.gitmodules`：合併，不覆蓋；`my-ai` submodule 區塊必須包含 `ignore = all`。
 - `.vite/`：屬於產物 / cache，若 template 內存在，複製前詢問是否跳過。
 - `.env.local` / `.env.prd`：可能含環境設定，複製前提醒使用者確認。
 
@@ -141,7 +121,7 @@
 
 ## my-ai submodule 規則
 
-目標 repo 必須有 `aidata` submodule。
+目標 repo 必須有 `my-ai` submodule。
 
 標準 `.gitmodules` 區塊：
 
@@ -153,10 +133,10 @@
 ```
 
 處理規則：
-- 若沒有 `aidata/`：加入 submodule。
-- 若已有 `aidata/` 且是正確 submodule：跳過，並確認 `.gitmodules` 有 `ignore = all`。
-- 若已有 `aidata/` 但不是 submodule：停下來問使用者，不得覆蓋或刪除。
-- 若已有 `aidata` submodule 但 URL 不同：停下來問使用者。
+- 若沒有 `my-ai/`：加入 submodule。
+- 若已有 `my-ai/` 且是正確 submodule：跳過，並確認 `.gitmodules` 有 `ignore = all`。
+- 若已有 `my-ai/` 但不是 submodule：停下來問使用者，不得覆蓋或刪除。
+- 若已有 `my-ai` submodule 但 URL 不同：停下來問使用者。
 
 ---
 
@@ -226,7 +206,6 @@ Repo Init 結果
 - Repo 類型：
 - Template：
 - 設計範本：{slug}（大類 {category-id}）/ 跳過
-- Git remote：
 - my-ai submodule：已建立 / 已存在 / 待處理
 - generalrules：已複製
 - _plans：已建立
