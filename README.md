@@ -33,7 +33,7 @@
 
 </details>
 
-將`.clinerule.md` 拖到外層根目錄並依照使用的 Agent 更名
+將`.clinerule.md` 複製到外層根目錄並依照使用的 Agent 更名
 
 ## 結構
 
