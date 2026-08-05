@@ -129,7 +129,7 @@
 
 ### 6. `productivity-saas` — 生產力與協作 SaaS
 
-適合：內部工具、表單、看板、協作、自動化後台（**最接近 toolstemplate**）。
+適合：內部工具、表單、看板、協作、自動化後台（**最接近 vue-template**）。
 
 | slug | 簡述 |
 |------|------|
@@ -147,7 +147,7 @@
 | `superhuman` | 深色 premium、鍵盤優先 |
 | `slack` | 企業協作、紫色工作區 |
 
-**toolstemplate 預設推薦**：`linear.app`、`notion`、`airtable`、`intercom`
+**vue-template 預設推薦**：`linear.app`、`notion`、`airtable`、`intercom`
 
 ---
 

@@ -6,7 +6,7 @@
 
 | 規則 | 說明 |
 |------|------|
-| Phase 順序鎖定 | WebAPI: P1→P2→⛔→P3→P4；BackgroundService: P1→P2→⛔→P3→P4 |
+| Phase 順序鎖定 | WebAPI: P1→P2→⛔→P3→P4；BackgroundService: P1→P2→⛔→P3→P4；Vue/Nuxt: P1→P2→P3→P4→P5→P6；Angular: P1→P2→⛔→P3→P4→P5→P6 |
 | I/O 禁止模糊 | 禁止「Member 資料」、「回傳 DTO」等描述，必須逐欄展開 |
 | POST/PUT Body | 每個欄位列出：欄位名、類型、✅必填/—選填、說明、範例值 |
 | Response 欄位 | 每個端點列出：欄位名、類型、說明，並附 JSON 範例 |
@@ -114,6 +114,59 @@ Phase 6 — 整合測試 / Checklist 驗收
 
 > GET → Insert → Update → Delete 的順序不得顛倒。若某類操作不存在，跳過對應 Phase，其餘順序維持不變。
 
+
+---
+
+#### 🟠 前端 Angular 類型
+
+```
+Phase 1 — Service + DTO 層建立
+  └── 定義所有 API 呼叫的 Angular Service（HttpClient 封裝）
+  └── 定義對應 TypeScript Interface / DTO（對齊 API Response）
+  └── 產出物：可注入、可呼叫後端的 Service 類別（`@Injectable`）
+
+Phase 2 — Component 骨架與路由設定
+  └── 建立所有需要的 Component（含 `.component.ts`、`.component.html`、`.component.scss`）
+  └── 設定 Route（`app-routing.module.ts`）、Lazy Loading（`loadChildren`）
+  └── 此階段 Template 僅放佔位文字，不串接資料
+  └── 產出物：可導航、可看到頁面骨架的 Angular 專案
+
+⛔ 中止點：交由開發者 / PM Review 頁面結構與路由設計，確認後才繼續
+
+Phase 3 — GET / Select（查詢展示）
+  └── 實作所有資料讀取頁面與元件
+  └── 串接 Phase 1 的 Service，實作列表、詳情、分頁、篩選
+  └── 加入 loading 狀態（`*ngIf="isLoading"`）、empty state、error state
+
+Phase 4 — Insert / Create（新增）
+  └── 實作新增表單（優先使用 Reactive Forms：`FormBuilder` + `Validators`）
+  └── 含欄位驗證、送出邏輯、Toast 回饋
+
+Phase 5 — Update / Edit + Delete（修改與刪除）
+  └── 實作編輯 Modal 或 inline 編輯、預填資料（`patchValue`）、送出邏輯
+  └── 實作刪除確認 Dialog、送出邏輯、成功後 UI 更新
+
+Phase 6 — 整合測試 / Checklist 驗收
+  └── 查閱本次串接後端服務的 scenario-flows/，確認現有場景是否受影響，補充必要情境或調整測試流程
+  └── 含互動 CRUD 時須填 **E2E 小節**（§9.5 或同級如 §7.6）；Phase 6 情境表須含 Test ID 並與 E2E 小節對齊
+```
+
+> Service → Component 骨架 → GET → Insert → Update/Delete 的順序不得顛倒。若某類操作不存在，跳過對應 Phase，其餘順序維持不變。
+
+### Angular 實作注意事項
+
+| 項目 | 規範 |
+|------|------|
+| 元件結構 | 每個 Component 三檔：`.component.ts` + `.component.html` + `.component.scss` |
+| 資料流 | Service（HttpClient）→ Component（subscribe / async pipe）→ Template（`*ngFor`, `*ngIf`, `{{ }}`） |
+| 表單 | 優先使用 **Reactive Forms**（`FormBuilder` + `Validators`）；簡單場景可用 Template-driven |
+| HTTP 錯誤處理 | Service 層統一做 `catchError`（`rxjs/operators`）；Component 層依 error type 顯示 Toast / inline error |
+| 狀態管理 | 小型專案用 Service + `BehaviorSubject`；大型專案考慮 NgRx |
+| 路由 | 使用 Lazy Loading（`loadChildren: () => import(...)`）分割 bundle |
+| 樣式 | 使用 SCSS + `:host` 封裝；共用變數放 `src/styles/_variables.scss` |
+| test id | 每個互動元素加 `data-testid` 屬性供 E2E；Angular 模板：`<button [attr.data-testid]="'xxx-btn'">` |
+| DI | Service 使用 `@Injectable({ providedIn: 'root' })`；Interceptors 用 `HTTP_INTERCEPTORS` multi provider |
+
 ---
 
 ### 區塊排列順序（強制）
@@ -154,7 +207,7 @@ Plan 的區塊必須依以下順序排列，不得任意調換。
 
 > 版本：v1.0 | 日期：YYYY-MM-DD | 作者：
 > Plan 類型：feature / bugfix / refactor / tech-debt
-> 專案類型：webapi / frontend / backgroundservice / mixed
+> 專案類型：webapi / frontend / angular / backgroundservice / mixed
 > 涉及服務：
 > 是否涉及 DB：是 / 否
 > 是否涉及 API：是 / 否

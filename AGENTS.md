@@ -34,12 +34,50 @@
 
 ## 前端／UI 規範套用
 
+編輯前端檔案前，依專案框架類型套用對應規範：
+
+### Vue / Nuxt 專案
+
 編輯 `.vue`、`pages/`、`components/`、`layouts/`、`nuxt.config.*` 等前端檔案前：
 
 1. **鎖定 repo**：以目前正在修改的檔案所屬 **repo 根目錄** 為準。
 2. **讀取**該 repo 根目錄 `./.rules.md`，並依其內容套用。
 3. 若該 repo **尚無** `./.rules.md`：**先詢問開發者**。
 4. 若前端改動涉及大量資料渲染、API 批次呼叫或 WebSocket，參考 `./performance-rules.md`。
+
+### Angular 專案
+
+編輯 `.ts`、`.html`、`.scss`、`src/app/`、`angular.json` 等 Angular 前端檔案前：
+
+1. **鎖定 repo**：以目前正在修改的檔案所屬 **repo 根目錄** 為準。
+2. **讀取**該 repo 根目錄 `./.rules.md`，並依其內容套用。
+3. 若該 repo **尚無** `./.rules.md`：**先詢問開發者**。
+4. 若前端改動涉及大量資料渲染、API 批次呼叫或 WebSocket，參考 `./performance-rules.md`。
+
+#### Angular 檔案類型對應
+
+| 檔案類型 | 用途 | 注意事項 |
+|---------|------|---------|
+| `*.component.ts` | 元件邏輯（Class + Decorator） | 遵循 Angular Style Guide；OnInit 初始化 |
+| `*.component.html` | 元件模板 | 使用 `data-testid` 供 E2E；避免 inline style |
+| `*.component.scss` | 元件樣式 | 使用 `:host` 封裝；避免 `/deep/` |
+| `*.service.ts` | 服務（DI 注入） | `@Injectable({ providedIn: 'root' })` |
+| `*.module.ts` | NgModule 定義 | declarations / imports / providers 分清楚 |
+| `*.interceptor.ts` | HTTP 攔截器 | 實作 `HttpInterceptor` |
+| `*.guard.ts` | 路由守衛 | 實作 `CanActivate` 等介面 |
+| `*.dto.ts` / `*.interface.ts` | 型別定義 | 對齊 API Response 欄位 |
+| `angular.json` | 專案配置 | build / serve / test 設定 |
+| `environment*.ts` | 環境變數 | `environment.ts`(dev) / `environment.prd.ts`(prod) |
+
+---
+
+## 對話記憶（Session Persistence）
+
+**每次對話結束前**，應使用 `@session-log` 記錄本次對話摘要。
+
+**每次新對話開始時**，必須先讀取本專案 `_sessions/` 目錄中**最近 3 筆**記錄（依檔名日期排序），了解前面的開發上下文，避免重複詢問已解決的問題。
+
+若 `_sessions/` 不存在或為空，跳過此步驟。
 
 ---
 
@@ -53,6 +91,7 @@
 | PR Review | `@pr-review`、commit、push | `./systemprompts/pr-review-prompt.md` |
 | Repo Init | `@repo-init`、初始化 repo、建立新專案 | `./systemprompts/repo-init-prompt.md` |
 | Lesson Learned | `@lesson-learned`、記錄這次 bug | `./systemprompts/lesson-learned-prompt.md` |
+| Session Log | `@session-log`、記錄這次對話、結束前記錄 | `./systemprompts/session-log-prompt.md` |
 | Debug Helper | `@debug-helper`、遇到 bug | `./systemprompts/debug-helper-prompt.md` |
 | Perf Review | `@perf-review`、效能檢查 | `./systemprompts/perf-review-prompt.md` |
 | Test Maker | `@test-maker`、寫測試計畫 | `./systemprompts/test-maker-prompt.md` |

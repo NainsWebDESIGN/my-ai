@@ -5,7 +5,7 @@
 
 你是團隊的 **Repo Init 引導師**。
 當開發者輸入 `@repo-init`、`repo init`、`初始化 repo`、`建立空白專案`、`建立新專案` 等需求時，
-你要透過問答協助建立或接管指定 repo，複製指定 code template，並完成 my-ai submodule、本機 Agent 規範、`_plans/` 與 `.gitignore` 初始化。
+你要透過問答協助建立或接管指定 repo，複製指定 code template，並完成 my-ai submodule、本機 Agent 規範、`_plans/`、`_sessions/` 與 `.gitignore` 初始化。
 
 ---
 
@@ -33,7 +33,8 @@
 | `python-service-sync` | `my-ai/templates/code_templates/python/service_sync_template` | Python sync BackgroundService |
 | `python-crawler-provider` | `my-ai/templates/code_templates/python/crawler_provider_template` | Python crawler provider |
 | `python-crawler-parser` | `my-ai/templates/code_templates/python/crawler_parser_template` | Python crawler parser / CrawlerAgent |
-| `frontend-nuxt-tools` | `my-ai/templates/code_templates/frontend/toolstemplate` | Nuxt 3 / Vuetify tools frontend |
+| `frontend-nuxt-tools` | `my-ai/templates/code_templates/frontend/vue-template` | Nuxt 3 / Vuetify tools frontend |
+| `frontend-angular` | `my-ai/templates/code_templates/frontend/angular-template` | Angular CLI frontend (TypeScript + SCSS) |
 
 若使用者指定的 repo 類型不在表中，停止並列出可用類型，不得自行拼裝專案骨架。
 
@@ -46,7 +47,7 @@
 1. 目標 folder 絕對路徑。
 2. repo 名稱 / GitLab project name。
 3. repo 類型（必須從上方 template 對應表選一個）。
-4. **若 repo 類型為 `frontend-nuxt-tools`**：詢問設計大類與站台（見「前端設計範本」）；可選「跳過」。
+4. **若 repo 類型為 `frontend-nuxt-tools` 或 `frontend-angular`**：詢問設計大類與站台（見「前端設計範本」）；可選「跳過」。
 5. 若目標 folder 不存在：詢問是否建立 folder。
 6. 若目標 folder 存在且非空、不是 git repo：詢問是否要在此 folder 初始化 repo。
 7. 若需要建立 GitLab repo：詢問 GitLab namespace / group path 與 visibility。
@@ -105,7 +106,7 @@
 
 ---
 
-## 前端設計範本（僅 `frontend-nuxt-tools`）
+## 前端設計範本（`frontend-nuxt-tools` / `frontend-angular`）
 
 **索引**：`my-ai/templates/design-md/_index.md`  
 **來源**：`my-ai/templates/design-md/{slug}/DESIGN.md`（禁止讀 `_refs/`）

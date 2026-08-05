@@ -1,0 +1,39 @@
+// 全域樣式
+// 共用 SCSS 變數與 mixin 放此
+
+// === 顏色變數 ===
+$primary: #1976d2;
+$accent: #ff4081;
+$warn: #f44336;
+$bg-color: #f5f5f5;
+$text-primary: #212121;
+$text-secondary: #757575;
+$border-color: #e0e0e0;
+
+// === 通用 ===
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+  color: $text-primary;
+  background: $bg-color;
+}
+
+// === Loading / Empty / Error 通用狀態 ===
+.loading-state,
+.empty-state,
+.error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: $text-secondary;
+}
+
+.error-state {
+  color: $warn;
+}
