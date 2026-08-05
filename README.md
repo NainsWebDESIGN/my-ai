@@ -17,8 +17,6 @@
 
 <details>
 
-<details>
-
 <summary>已有專案時</summary>
 
 新增 `.gitmodules`，並寫入:
@@ -34,8 +32,6 @@
 指令加入子模組`git submodule update --init --recursive`
 
 </details>
-
-<details>
 
 將`.clinerule.md` 拖到外層根目錄並依照使用的 Agent 更名
 
