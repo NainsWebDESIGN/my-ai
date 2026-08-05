@@ -2,9 +2,8 @@
 // 共用 SCSS 變數與 mixin 放此
 
 // ============================================================
-// 設計 tokens 區塊 — 對應 repo 根目錄 ./DESIGN.md
-// 更換設計範本時，修改此區塊的變數值即可
-// 格式：colors → SCSS 變數, typography → font-family, spacing → 間距
+// === DESIGN_TOKENS_AUTO: 由 repo-init 依 DESIGN.md 自動產生 ===
+// === 手動修改無效，下次 repo-init 會覆蓋                     ===
 // ============================================================
 
 // --- 顏色（映射自 DESIGN.md colors） ---
@@ -16,8 +15,6 @@ $ink: #212121;
 $link: #1976d2;
 $accent: #ff4081;
 $warn: #f44336;
-$error: #f44336;
-$success: #4caf50;
 $text-secondary: #757575;
 $border-color: #e0e0e0;
 
@@ -46,7 +43,7 @@ $spacing-xl: 24px;
 $spacing-xxl: 32px;
 $spacing-section: 40px;
 
-// ============================================================
+// === DESIGN_TOKENS_AUTO_END ===
 
 // === 通用 ===
 * {

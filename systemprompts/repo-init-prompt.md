@@ -115,6 +115,25 @@
 - 於 `.rules.md`「視覺設計」區塊追加：`- 本專案設計範本：\`{slug}\`（大類：\`{category-id}\`）`
 - `DESIGN.md` 提交到目標 repo
 
+### Step D4 — 設計 tokens 自動映射（必要步驟）
+
+複製 DESIGN.md 後，必須將設計 tokens 寫入框架主題設定檔，讓 `npm start` 直接看到效果：
+
+**Angular（`frontend-angular`）：**
+- 讀取 `{repo-root}/DESIGN.md`，解析 `colors`、`typography`、`rounded`、`spacing`
+- 找到 `src/styles.scss` 中 `DESIGN_TOKENS_AUTO` 與 `DESIGN_TOKENS_AUTO_END` 標記之間的區塊
+- 將區塊內的 SCSS 變數替換為 DESIGN.md 的實際值（color → `$primary`, typography → `$font-body`, rounded → `$radius-*`, spacing → `$spacing-*`）
+- 若 DESIGN.md 有 `tint-*` 顏色，也一併映射
+
+**Vue / Nuxt（`frontend-nuxt-tools`）：**
+- 讀取 `{repo-root}/DESIGN.md`，解析 `colors`
+- 找到 `app/plugins/vuetify.ts` 中 `DESIGN_TOKENS_AUTO` 與 `DESIGN_TOKENS_AUTO_END` 標記之間的區塊
+- 將 `themes.light.colors` 和 `themes.dark.colors` 中的 primary / background / surface 等替換為 DESIGN.md 對應色值
+
+**後端類型（`csharp-*`、`python-*`）：** 不需要執行此步驟。
+
+> 此步驟確保選了風格後 `npm start` / `npm run dev` 立即看到效果，而非只有 DESIGN.md 躺在資料夾裡。
+
 猶豫時推薦：`productivity-saas` → `linear.app`、`notion`、`airtable`、`intercom`
 
 ---
