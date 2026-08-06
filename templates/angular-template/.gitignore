@@ -2,3 +2,5 @@ node_modules/
 dist/
 .angular/
 *.log
+pnpm-lock.yaml
+package-lock.json

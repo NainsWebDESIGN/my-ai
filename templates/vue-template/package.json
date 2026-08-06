@@ -11,6 +11,8 @@
     "build:prd": "nuxt build --dotenv .env.prd",
     "local": "concurrently \"nuxt dev --dotenv .env.local\" \"npm run type-check\"",
     "prd": "concurrently \"nuxt dev --dotenv .env.prd\" \"npm run type-check\"",
+    "_local": "concurrently \"nuxt dev --dotenv .env.local\" \"pnpm type-check\"",
+    "_prd": "concurrently \"nuxt dev --dotenv .env.prd\" \"npm type-check\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
