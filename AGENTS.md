@@ -3,24 +3,26 @@
 > **[核心指令]**
 > 請在執行任何任務前，務必先讀取並遵守 `./CLAUDE.md` 的 AI 行為準則。
 
-| 類型 | 位置 |
-|---|---|
-| AI 核心行為準則 | `./CLAUDE.md` |
-| Plan 規範 | `./PLAN_SPEC.md` |
+| 類型             | 位置                             |
+| ---------------- | -------------------------------- |
+| AI 核心行為準則  | `./CLAUDE.md`                    |
+| Plan 規範        | `./PLAN_SPEC.md`                 |
 | 前端/UI 撰寫規範 | **各 repo 根目錄** `./.rules.md` |
-| 測試計畫規範 | `./testing/TEST_PLAN_SPEC.md` |
-| 測試腳本規範 | `./testing/testing-rules.md` |
+| 測試計畫規範     | `./testing/TEST_PLAN_SPEC.md`    |
+| 測試腳本規範     | `./testing/testing-rules.md`     |
 
 ---
 
 ## AI 編碼行為準則（摘要）
 
-核心四原則：
+核心六原則：
 
 1. **編碼前先想清楚** — 列假設、查 `documents.md`、不確定先問
 2. **簡潔優先** — 只實作請求範圍，不預留未要求的抽象或功能
 3. **精準修改** — 每行 diff 須能追溯到請求；不順手重構或改格式
 4. **目標驅動** — 將任務轉為可驗證目標（測試通過、`@pr-review` pass 等）
+5. **編碼後確認內容** — 新增的內容必須沒有亂碼
+6. **語言與溝通風格** — 請一律使用「繁體中文 (Traditional Chinese)」進行對話與程式碼註解。
 
 ---
 
@@ -60,18 +62,18 @@
 
 #### Angular 檔案類型對應
 
-| 檔案類型 | 用途 | 注意事項 |
-|---------|------|---------|
-| `*.component.ts` | 元件邏輯（Class + Decorator） | 遵循 Angular Style Guide；OnInit 初始化 |
-| `*.component.html` | 元件模板 | 使用 `data-testid` 供 E2E；避免 inline style |
-| `*.component.scss` | 元件樣式 | 使用 `:host` 封裝；避免 `/deep/` |
-| `*.service.ts` | 服務（DI 注入） | `@Injectable({ providedIn: 'root' })` |
-| `*.module.ts` | NgModule 定義 | declarations / imports / providers 分清楚 |
-| `*.interceptor.ts` | HTTP 攔截器 | 實作 `HttpInterceptor` |
-| `*.guard.ts` | 路由守衛 | 實作 `CanActivate` 等介面 |
-| `*.dto.ts` / `*.interface.ts` | 型別定義 | 對齊 API Response 欄位 |
-| `angular.json` | 專案配置 | build / serve / test 設定 |
-| `environment*.ts` | 環境變數 | `environment.ts`(dev) / `environment.prd.ts`(prod) |
+| 檔案類型                      | 用途                          | 注意事項                                           |
+| ----------------------------- | ----------------------------- | -------------------------------------------------- |
+| `*.component.ts`              | 元件邏輯（Class + Decorator） | 遵循 Angular Style Guide；OnInit 初始化            |
+| `*.component.html`            | 元件模板                      | 使用 `data-testid` 供 E2E；避免 inline style       |
+| `*.component.scss`            | 元件樣式                      | 使用 `:host` 封裝；避免 `/deep/`                   |
+| `*.service.ts`                | 服務（DI 注入）               | `@Injectable({ providedIn: 'root' })`              |
+| `*.module.ts`                 | NgModule 定義                 | declarations / imports / providers 分清楚          |
+| `*.interceptor.ts`            | HTTP 攔截器                   | 實作 `HttpInterceptor`                             |
+| `*.guard.ts`                  | 路由守衛                      | 實作 `CanActivate` 等介面                          |
+| `*.dto.ts` / `*.interface.ts` | 型別定義                      | 對齊 API Response 欄位                             |
+| `angular.json`                | 專案配置                      | build / serve / test 設定                          |
+| `environment*.ts`             | 環境變數                      | `environment.ts`(dev) / `environment.prd.ts`(prod) |
 
 ---
 
@@ -87,19 +89,20 @@
 
 ## 引導師
 
-| 引導師 | 觸發語 | prompt |
-|---|---|---|
-| Plan 訪談師 | `@plan-maker`、幫我寫 Plan、新需求 | `./systemprompts/plan-maker-prompt.md` |
-| Plan 執行協調員 | `@plan-executor`、Resume、給我 Step 1 | `./systemprompts/plan-executor-prompt.md` |
-| Task Understanding | `@task-helper`、幫我理解任務 | `./systemprompts/task-understanding-prompt.md` |
-| PR Review | `@pr-review`、commit、push | `./systemprompts/pr-review-prompt.md` |
-| Repo Init | `@repo-init`、初始化 repo、建立新專案 | `./systemprompts/repo-init-prompt.md` |
-| Lesson Learned | `@lesson-learned`、記錄這次 bug | `./systemprompts/lesson-learned-prompt.md` |
-| Session Log | `@session-log`、記錄這次對話、結束前記錄 | `./systemprompts/session-log-prompt.md` |
-| Debug Helper | `@debug-helper`、遇到 bug | `./systemprompts/debug-helper-prompt.md` |
-| Perf Review | `@perf-review`、效能檢查 | `./systemprompts/perf-review-prompt.md` |
-| Test Maker | `@test-maker`、寫測試計畫 | `./systemprompts/test-maker-prompt.md` |
-| AI Tester | `@ai-tester`、執行測試 | `./systemprompts/ai-tester-prompt.md` |
+| 引導師             | 觸發語                                   | prompt                                         |
+| ------------------ | ---------------------------------------- | ---------------------------------------------- |
+| Plan 訪談師        | `@plan-maker`、幫我寫 Plan、新需求       | `./systemprompts/plan-maker-prompt.md`         |
+| Plan 執行協調員    | `@plan-executor`、Resume、給我 Step 1    | `./systemprompts/plan-executor-prompt.md`      |
+| Task Understanding | `@task-helper`、幫我理解任務             | `./systemprompts/task-understanding-prompt.md` |
+| PR Review          | `@pr-review`、commit、push               | `./systemprompts/pr-review-prompt.md`          |
+| Repo Init          | `@repo-init`、初始化 repo、建立新專案    | `./systemprompts/repo-init-prompt.md`          |
+| Lesson Learned     | `@lesson-learned`、記錄這次 bug          | `./systemprompts/lesson-learned-prompt.md`     |
+| Session Log        | `@session-log`、記錄這次對話、結束前記錄 | `./systemprompts/session-log-prompt.md`        |
+| Debug Helper       | `@debug-helper`、遇到 bug                | `./systemprompts/debug-helper-prompt.md`       |
+| Perf Review        | `@perf-review`、效能檢查                 | `./systemprompts/perf-review-prompt.md`        |
+| Test Maker         | `@test-maker`、寫測試計畫                | `./systemprompts/test-maker-prompt.md`         |
+| AI Tester          | `@ai-tester`、執行測試                   | `./systemprompts/ai-tester-prompt.md`          |
+| Repo Push          | `@repo-push`、自動檢查並推播             | `./systemprompts/repo-push-prompt.md`          |
 
 ---
 
