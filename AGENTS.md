@@ -1,7 +1,11 @@
 ## 規範文件索引
 
+> **[核心指令]**
+> 請在執行任何任務前，務必先讀取並遵守 `./CLAUDE.md` 的 AI 行為準則。
+
 | 類型 | 位置 |
 |---|---|
+| AI 核心行為準則 | `./CLAUDE.md` |
 | Plan 規範 | `./PLAN_SPEC.md` |
 | 前端/UI 撰寫規範 | **各 repo 根目錄** `./.rules.md` |
 | 測試計畫規範 | `./testing/TEST_PLAN_SPEC.md` |

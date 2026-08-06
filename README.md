@@ -33,7 +33,9 @@
 
 </details>
 
-將`.clinerule.md` 複製到外層根目錄並依照使用的 Agent 更名
+依照各自使用的 Agent 將 `initSetting` 內的導向索引複製到外層根目錄並依照使用的 Agent 更名(可詢問預讀檔名)
+
+- 例: 若用 Cline 就將 `initSetting/rules.md` 複製到外層根目錄並更名為 `.clinerule.md`
 
 ## 結構
 
