@@ -1,41 +1,36 @@
-# Session：完成 Vue 與 Angular 專案初始化及 pnpm 建置設定修正
+# Session：修正 AI 設定與更新 Session Log 流程
 
-> 日期：2026-08-06 | 專案：test-angular-app & my-ai
+> 日期：2026-08-06 | 專案：my-ai
 
 ---
 
 ## 完成事項
 
-- 成功使用 `@repo-init` 初始化了 `test-vue-app`（搭配 cursor / devtools-infra 設計風格）與 `test-angular-app`（搭配 supabase / devtools-infra 設計風格）。
-- 解決了 pnpm v10+ 針對原生模組（`@parcel/watcher`、`esbuild`）要求手動授權 `approve-builds` 的問題。
-- 修改了 `session-log-prompt.md` 規則，減少 Agent 的提問數量，並規定由 Agent 自動統整對話紀錄。
+- 修正並最佳化 `my-ai` 內的 AI 協作設定與 Prompt 流程，使其更精簡並專注於當前開發目錄。
+- 順利將變更透過 `@repo-push` 推送到遠端儲存庫。
 
 ---
 
 ## 異動檔案
 
-- `test-vue-app/` 與 `test-angular-app/` (初始化整個目錄結構)
-- `test-vue-app/package.json`、`my-ai/templates/vue-template/package.json` (移除已廢棄的 `pnpm` 欄位)
-- `test-vue-app/pnpm-workspace.yaml`、`test-angular-app/pnpm-workspace.yaml`、`my-ai/templates/angular-template/pnpm-workspace.yaml`、`my-ai/templates/vue-template/pnpm-workspace.yaml` (新增 pnpm `allowBuilds` 設定)
-- `test-vue-app/.gitignore`、`test-angular-app/.gitignore` (加入 Agent 本機專用規則 `.cursor/`, `AGENTS.md` 等)
-- `test-vue-app/.rules.md`、`test-angular-app/src/styles/_design-tokens.scss` (套用設計風格)
-- `my-ai/systemprompts/session-log-prompt.md` (精簡提問流程)
+- `.gitignore` (新增 `.specstory` 忽略規則)
+- `README.md` (修正文件內目錄名稱拼字為 `init-index`)
+- `systemprompts/session-log-prompt.md` (精簡提問流程，加入「只記錄當前目錄」的過濾規則，並嚴禁寫入 Code Blocks)
 
 ---
 
 ## 關鍵決策與取捨
 
-- 發現 pnpm `package.json` 裡的 `pnpm.onlyBuiltDependencies` 已失效，改為全面在各專案與模板根目錄部署 `pnpm-workspace.yaml` 進行白名單授權。
-- `test-angular-app` 專案目前為本機建立，尚未推送到遠端。而 `my-ai` 模板庫的變更則已透過 `@repo-push` 成功推送到遠端 `main` 分支。
+- 將 `@session-log` 原本五題的人工提問改為兩題，前三題改由 AI 自動依據終端機「當前目錄」的開發軌跡生成，排除了原本混在一起的其他專案資訊（如 `test-angular-app` 的異動），讓這份紀錄精準對齊 `my-ai` 本身的開發脈絡。
 
 ---
 
 ## 待辦 / 下一步
 
-看看各個引導師，還有沒有更適合我的
+看看各個引導師，正確了解每個引導師的功能，並且看看有沒有能更正成更適合我的
 
 ---
 
 ## 給下個 agent 的提示
 
-目前沒有
+若我想不起來要幹嘛就開頭提示我一下「依照上次的紀錄，你可以先了解一下引導師的功能，是否有需要?」
