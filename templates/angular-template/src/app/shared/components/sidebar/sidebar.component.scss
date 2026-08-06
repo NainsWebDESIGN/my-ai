@@ -1,4 +1,20 @@
-.app-shell { height: 100vh; }
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.fixed-header {
+  flex-shrink: 0;
+  z-index: 2;
+  background: var(--color-primary); 
+  color: var(--color-primary-contrast);
+}
+
+.app-shell { 
+  flex: 1; 
+  height: auto; 
+}
 
 .sidebar { width: 260px; }
 
@@ -21,12 +37,6 @@
 }
 
 .main-content {
-  height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   padding: 16px;
-}
-
-.dark-theme .main-content {
-  background: #121212;
-  color: #fff;
 }

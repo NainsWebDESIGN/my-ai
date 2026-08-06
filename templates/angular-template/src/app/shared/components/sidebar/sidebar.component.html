@@ -1,14 +1,15 @@
-<mat-sidenav-container class="app-shell">
-  <mat-sidenav mode="side" opened class="sidebar">
-    <mat-toolbar color="primary" class="toolbar-brand">
-      <span class="brand-title">Review Tools</span>
-      <span class="spacer"></span>
-      <button mat-icon-button (click)="toggleTheme()" matTooltip="切換UI主題">
-        <mat-icon>{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
-      </button>
-    </mat-toolbar>
+<div class="app-layout">
+  <mat-toolbar color="primary" class="toolbar-brand fixed-header">
+    <span class="brand-title">Review Tools</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="toggleTheme()" matTooltip="切換UI主題">
+      <mat-icon>{{ isDark ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
 
-    <mat-nav-list>
+  <mat-sidenav-container class="app-shell">
+    <mat-sidenav mode="side" opened class="sidebar">
+      <mat-nav-list>
       <ng-container *ngFor="let group of sidebarList">
         <mat-list-item (click)="toggleGroup(group.name)" class="nav-group-header">
           <mat-icon matListItemIcon>{{ group.icon }}</mat-icon>
@@ -34,3 +35,4 @@
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

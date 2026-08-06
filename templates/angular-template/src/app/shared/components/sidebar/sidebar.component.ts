@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
   ];
 
   openGroups: Set<string> = new Set();
-  isDark = false;
+  isDark = true;
 
   constructor(private renderer: Renderer2) {}
 
@@ -59,7 +59,7 @@ export class SidebarComponent implements OnInit {
 
   private loadTheme(): void {
     const saved = localStorage.getItem('theme');
-    this.isDark = saved === 'dark';
+    this.isDark = saved !== 'light';
     if (this.isDark) {
       this.renderer.addClass(document.body, 'dark-theme');
     }

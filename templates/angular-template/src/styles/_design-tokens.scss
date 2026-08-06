@@ -1,4 +1,4 @@
-﻿// === DESIGN_TOKENS_AUTO: 由 repo-init 依 DESIGN.md 自動產生 ===
+// === DESIGN_TOKENS_AUTO: 由 repo-init 依 DESIGN.md 自動產生 ===
 // === 手動修改無效，下次 repo-init 會覆蓋                     ===
 
 // --- 顏色（映射自 DESIGN.md colors） ---
@@ -77,46 +77,46 @@ $spacing-section: 40px;
 }
 
 // Material 元件底色覆蓋
-.mat-sidenav-container, .mat-sidenav-content { background: $canvas; }
-.mat-toolbar.mat-primary { background: $primary; color: $primary-contrast; }
-.mat-mdc-card, .mat-mdc-dialog-container { background: $surface; border-radius: $radius-sm; }
+.mat-sidenav-container, .mat-sidenav-content { background: var(--color-canvas); }
+.mat-toolbar.mat-primary { background: var(--color-primary); color: var(--color-primary-contrast); }
+.mat-mdc-card, .mat-mdc-dialog-container { background: var(--color-surface); border-radius: var(--radius-sm); }
 html, body {
   height: 100%; margin: 0; padding: 0;
-  font-family: $font-body;
-  color: $ink;
-  background: $canvas;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-canvas);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-a { color: $link; }
+a { color: var(--color-link); }
 
 // === 通用元件樣式 ===
 .card {
-  background: $surface;
-  border: 1px solid $border-color;
-  border-radius: $radius-sm;
-  padding: $spacing-md;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
 }
 
 .btn-primary {
-  background: $primary; color: $primary-contrast;
-  border: none; border-radius: $radius-sm;
-  padding: $spacing-sm $spacing-md;
-  font-family: $font-ui; cursor: pointer;
+  background: var(--color-primary); color: var(--color-primary-contrast);
+  border: none; border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-ui); cursor: pointer;
   &:hover { opacity: 0.9; }
 }
 
 .btn-outline {
-  background: transparent; color: $primary;
-  border: 1px solid $primary; border-radius: $radius-sm;
-  padding: $spacing-sm $spacing-md;
-  font-family: $font-ui; cursor: pointer;
-  &:hover { background: $primary; color: $primary-contrast; }
+  background: transparent; color: var(--color-primary);
+  border: 1px solid var(--color-primary); border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-ui); cursor: pointer;
+  &:hover { background: var(--color-primary); color: var(--color-primary-contrast); }
 }
 
 .loading, .empty, .error-state {
   display: flex; justify-content: center; align-items: center;
-  padding: $spacing-xxl; color: $text-secondary;
+  padding: var(--spacing-xxl); color: var(--color-text-secondary);
 }
-.error-state { color: $warn; }
+.error-state { color: var(--color-warn); }
