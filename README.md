@@ -54,19 +54,20 @@ my-ai/
 
 ## 引導師
 
-| 觸發語            | 功能                                    |
-| ----------------- | --------------------------------------- |
-| `@plan-maker`     | 撰寫 Plan 規格書                        |
-| `@plan-executor`  | 依 Plan 逐步實作                        |
-| `@repo-init`      | 初始化新專案                            |
-| `@pr-review`      | PR 提交前審查                           |
-| `@test-maker`     | 產生測試計畫                            |
-| `@ai-tester`      | 執行測試腳本                            |
-| `@debug-helper`   | 除錯引導                                |
-| `@perf-review`    | 效能分析                                |
-| `@session-log`    | 記錄對話摘要，讓下一個 agent 繼承上下文 |
-| `@lesson-learned` | 記錄 bug 經驗                           |
-| `@task-helper`    | 任務分析與理解                          |
+| 編號 | 觸發語            | 功能                                    |
+| ---- | ----------------- | --------------------------------------- |
+| 1    | `@plan-maker`     | 撰寫 Plan 規格書 (釐清需求)             |
+| 2    | `@plan-executor`  | 依 Plan 逐步實作                        |
+| 3    | `@task-helper`    | 任務分析與理解                          |
+| 4    | `@pr-review`      | PR 提交前審查                           |
+| 5    | `@repo-init`      | 初始化 repo、建立新專案                 |
+| 6    | `@lesson-learned` | 記錄 bug 與除錯經驗                     |
+| 7    | `@session-log`    | 記錄對話摘要，讓下一個 agent 繼承上下文 |
+| 8    | `@debug-helper`   | 遇到 bug 時的除錯引導                   |
+| 9    | `@perf-review`    | 效能分析與檢查                          |
+| 10   | `@test-maker`     | 撰寫測試計畫                            |
+| 11   | `@ai-tester`      | 執行自動化測試                          |
+| 12   | `@repo-push`      | 自動檢查錯誤並推播至遠端儲存庫          |
 
 ### AI 初創流程建議
 
