@@ -60,4 +60,4 @@
 
 ---
 
-_本檔案將放置於專案根目錄下的 `.agents/AGENTS.md`，作為 Antigravity 自動載入的第一入口。_
+_本檔案將放置於專案根目錄下的 `AGENTS.md`，作為 Antigravity 自動載入的第一入口。_
