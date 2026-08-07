@@ -126,9 +126,13 @@
 
 ## 寫檔
 
-路徑：以終端機當前所在的工作目錄 (Workspace 根目錄) 為基準的 `_sessions/{filename}`
+**寫檔前先確認 Git Repo 位置：**
 
-若該目錄下的 `_sessions/` 目錄不存在，請先自動建立。
+執行 `git rev-parse --show-toplevel`：
+- ✅ **成功**：取得 repo 根目錄路徑，以該路徑為基準寫入 `_sessions/{filename}`
+- ❌ **失敗**：停止並提醒開發者：「當前終端機目錄不在任何 Git 專案內，請確認終端機位置後再試。」
+
+若 `_sessions/` 目錄不存在，請先自動建立。
 
 ---
 
