@@ -36,7 +36,7 @@
 {project}/_testcases/{ticketId}/{ticketId}-testcases.xlsx
 {service}/_tempscripts/{ticketId}/*.yml
 {service}/_tempscripts/{ticketId}/Version.yml
-{frontend}/_tempe2e/{ticketId}/*.spec.ts
+./frontend/{project}/_tempe2e/{ticketId}/*.spec.ts
 ```
 
 `{project}` 為主要功能歸屬（如 `newlottery`）；腳本 folder 第一段為服務名（如 `memberserviceTest`）。
@@ -146,7 +146,7 @@ xlsx「測試項目」前綴：`[正確場景]`、`[邊界場景]`、`[錯誤場
 | 類型 | 輸出路徑 | 命名規則 |
 |------|----------|----------|
 | Bruno | `{service}/_tempscripts/{ticketId}/` | `R-{n} {Endpoint} {Scenario}.yml` |
-| Playwright | `{frontend}/_tempe2e/{ticketId}/` | `E2E-{nn} {feature}.spec.ts` |
+| Playwright | `./frontend/{project}/_tempe2e/{ticketId}/` | `E2E-{nn} {feature}.spec.ts` |
 
 ## 11. Test Plan Gate 自檢
 

@@ -52,8 +52,8 @@
 在進入第二輪提問前，依已知的服務 / 需求範圍主動查閱（查詢結果用於訪談交叉比對，**並在產出 Plan 時填入 §11 Spec 參考文件表**）：
 
 - 若提到特定服務 / 前端專案名稱 → 依 kind 讀 `my-ai/webapi-example/_index.md` 確認 OpenAPI 路徑（`{service}.json`）與 `documents.md` 是否存在
-- 業務規範 → 讀 `my-ai/webapi-example/{serviceName}/documents.md` 或 `my-ai/frontend-example/{projectName}/documents.md`（若存在）
-- 架構 / 既有端點 → 讀 `my-ai/{kind}/{serviceName}-detail.md`（若存在）
+- 業務規範 → 讀 `./webapi/{serviceName}/documents.md` 或 `./frontend/{projectName}/documents.md`（若存在）
+- 架構 / 既有端點 → 讀 `./{kind}/{serviceName}/detail.md`（若存在）
 - OpenAPI I/O → 必要時讀 `{service}.json` 中與本次相關的 path（產 Plan 時 I/O 須與 OpenAPI 一致或標註差異）
 - 若同一服務下有 `scenario-flows/` → 先列目錄，挑與需求最相關的 1～3 個讀取；**路徑寫入 §11 Spec 表**
 - 若任務是擴充 / 修改現有 API 或 DB schema → 見上 detail

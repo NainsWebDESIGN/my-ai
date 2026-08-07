@@ -230,8 +230,8 @@ code 讀取由 Step 卡授權 coding agent 在 §10 範圍內有限讀取。
 
 ## Spec 已讀（executor 首次填入；Resume 可略讀 my-ai）
 
-- [x] `my-ai/webapi-example/{service}/{service}.json`
-- [x] `my-ai/webapi-example/{service}/documents.md`
+- [x] `./webapi/{service}/{service}.json`
+- [x] `./webapi/{service}/documents.md`
 
 ## 進度（快速 Resume）
 
@@ -328,8 +328,8 @@ code 讀取由 Step 卡授權 coding agent 在 §10 範圍內有限讀取。
 
 ✅ Spec 必讀（本步子集；Resume 且 steps 檔 Spec 已讀可註「已讀可略」）：
 - Plan §{x}.{y}
-- `my-ai/webapi-example/{service}/{service}.json` — 端點 {Method} {Path}（Plan 列出的完整路徑）
-- `my-ai/webapi-example/{service}/documents.md` §{章節}（業務規則，Plan 有列才讀）
+- `./webapi/{service}/{service}.json` — 端點 {Method} {Path}（Plan 列出的完整路徑）
+- `./webapi/{service}/documents.md` §{章節}（業務規則，Plan 有列才讀）
 - （跨服務時）`my-ai/webapi-example/{other}/{other}.json`（Plan Spec 參考文件表列）
 
 ✅ Coding style（實作 agent 專用，本步若涉及前端/UI/.vue 等）：

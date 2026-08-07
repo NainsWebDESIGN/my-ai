@@ -553,7 +553,7 @@ Content-Type: application/json
      純靜態展示、無互動寫入、明確 Out of Scope E2E 時可省略，並在 §4 範圍註明。 -->
 
 > **與 scenario-flows 的分工**
-> - 後端 `my-ai/webapi-example/{service}/scenario-flows/`：API 呼叫序列、DB/Cache、業務規則；供 Bruno / API 測試與 **E2E 前置資料 setup**。
+> - 後端 `./webapi/{service}/scenario-flows/`：API 呼叫序列、DB/Cache、業務規則；供 Bruno / API 測試與 **E2E 前置資料 setup**。
 > - 本節：頁面互動、UI 斷言、Toast/Dialog 文案；供 Playwright 腳本生成。
 > - 禁止將 UI 操作步驟寫入 `webapi/*/scenario-flows/`。
 

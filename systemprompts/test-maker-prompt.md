@@ -146,7 +146,7 @@
 #### B. Playwright（`.spec.ts`）
 
 - 格式依 `testing-rules.md`
-- 路徑：`{frontend}/_tempe2e/{ticketId}/`
+- 路徑：`./frontend/{project}/_tempe2e/{ticketId}/`
 - 檔名：`E2E-01 Banned Happy Path.spec.ts`
 - Toast / Dialog 對齊 testplan §8.3
 - 整合測試預設打真實 API

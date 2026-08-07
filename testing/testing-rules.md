@@ -21,7 +21,7 @@ xlsx 由 `@test-maker` 產出；`@ai-tester` 以腳本 folder 為主，`xlsx` �
 
 - 命名對齊 testplan §6 Test ID 與 xlsx「測試項目」
 - Bruno：`{service}/_tempscripts/{ticketId}/`，含 `Version.yml`（或 `folder.yml`）
-- Playwright：`{frontend}/_tempe2e/{ticketId}/`
+- Playwright：`./frontend/{project}/_tempe2e/{ticketId}/`
 - `info.seq` / 檔名順序：login、前置資料優先
 - assertion / expect 對齊 xlsx「預期結果」，禁止模糊斷言
 - 環境變數用 `{{var}}`；不寫死 URL、token、密碼
@@ -182,7 +182,7 @@ npx bru run communityservice/community-statistics-api-plan --env-file <env檔>
 ## 與 my-ai 的關係
 
 - 業務語意（API 路徑、錯誤碼、欄位意義）→ 查 `my-ai/{kind}/{service}/documents.md`
-- 前端 E2E 頁面操作 → 查 `my-ai/frontend-example/{project}/ui-context.md`（若存在）
+- 前端 E2E 頁面操作 → 查 `./frontend/{project}/ui-context.md`（若存在）
 - 腳本與文件衝突 → 以 `documents.md` 為準修腳本，但不得修改 my-ai 本身
 
 服務對應：依 folder 路徑中的服務名稱，grep `my-ai/webapi-example/_index.md`、`my-ai/frontend-example/_index.md`、`my-ai/service/_index.md` 確認 kind 與路徑。
