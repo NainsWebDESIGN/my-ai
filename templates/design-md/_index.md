@@ -1,6 +1,6 @@
-# 前端設計範本索引（DESIGN.md）
+﻿# 前端設計範本索引（DESIGN.md）
 
-> 來源：[VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)（MIT）。已 vendor 至 `aidata/templates/design-md/{slug}/DESIGN.md`。
+> 來源：[VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md)（MIT）。已 vendor 至 `my-ai/templates/design-md/{slug}/DESIGN.md`。
 > **repo-init 僅讀此目錄**，不依賴 `_refs/`。
 
 ---
@@ -9,10 +9,10 @@
 
 1. 使用者選 `frontend-nuxt-tools` 後，詢問**設計大類**（下方 8 類選 1）。
 2. 列出該類 `slugs`，請使用者選站台或「跳過」。
-3. 複製 `aidata/templates/design-md/{slug}/DESIGN.md` → 目標 repo 根目錄 `./DESIGN.md`。
+3. 複製 `my-ai/templates/design-md/{slug}/DESIGN.md` → 目標 repo 根目錄 `./DESIGN.md`。
 4. 於目標 repo `.rules.md` 追加本專案設計範本紀錄（見 `repo-init.mdc`）。
 
-檔案路徑規則：`aidata/templates/design-md/{slug}/DESIGN.md`
+檔案路徑規則：`my-ai/templates/design-md/{slug}/DESIGN.md`
 
 ---
 

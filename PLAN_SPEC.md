@@ -1,4 +1,4 @@
-# Plan 規格書規範 (PLAN_SPEC)
+﻿# Plan 規格書規範 (PLAN_SPEC)
 
 ---
 
@@ -19,7 +19,7 @@
 | Plan Gate 先於實作比對 | PR Review 時必須先檢查 Plan 本身符合本規範；Plan Gate 未通過不得用該 Plan 放行實作 |
 | DB / 外部相依 | 涉及 DB 或第三方 / 內部 API 必須逐項列出；若無也要以表格明確標示「不適用」 |
 | Scope Guard | 實作不得超出 In Scope 與 File List；新增未列功能需另開 Plan |
-| Spec 參考文件 | §11 必填（涉及 aidata 服務時）：逐檔列出 OpenAPI `.json`、`documents.md`、跨服務 Spec；供 `@plan-executor` 讀取 |
+| Spec 參考文件 | §11 必填（涉及 my-ai 服務時）：逐檔列出 OpenAPI `.json`、`documents.md`、跨服務 Spec；供 `@plan-executor` 讀取 |
 | Step 進度檔 | `@plan-executor` 首次拆步寫入 `{repo}/_plans/logs/{PlanBasename}_steps.md`；Resume 依此檔接續 |
 
 ---
@@ -187,7 +187,7 @@ Plan 的區塊必須依以下順序排列，不得任意調換。
 10. 元件與頁面規格（UI Spec）         ← 前端 feature 必填（含 E2E 小節 §9.5 或同級，若需 Playwright）
 10a. E2E / Playwright 規格            ← 前端 feature 且需 E2E 時必填；純展示頁可省略並於 §4 註明
 11. 需新增或修改的檔案（File List）
-12. Spec 參考文件（Spec References）     ← 涉及 aidata 服務時必填；供 @plan-executor
+12. Spec 參考文件（Spec References）     ← 涉及 my-ai 服務時必填；供 @plan-executor
 13. 實作步驟（Implementation Plan）
 14. 驗收標準（Acceptance Criteria）
 15. Checklist
@@ -553,7 +553,7 @@ Content-Type: application/json
      純靜態展示、無互動寫入、明確 Out of Scope E2E 時可省略，並在 §4 範圍註明。 -->
 
 > **與 scenario-flows 的分工**
-> - 後端 `aidata/webapi/{service}/scenario-flows/`：API 呼叫序列、DB/Cache、業務規則；供 Bruno / API 測試與 **E2E 前置資料 setup**。
+> - 後端 `my-ai/webapi/{service}/scenario-flows/`：API 呼叫序列、DB/Cache、業務規則；供 Bruno / API 測試與 **E2E 前置資料 setup**。
 > - 本節：頁面互動、UI 斷言、Toast/Dialog 文案；供 Playwright 腳本生成。
 > - 禁止將 UI 操作步驟寫入 `webapi/*/scenario-flows/`。
 
@@ -656,9 +656,9 @@ path/to/file.ts    # 說明變更內容
 
 ## 11. Spec 參考文件
 
-> **必填**（Plan 涉及 `aidata` 內既有 WebAPI / BackgroundService / 前端專案時）。
+> **必填**（Plan 涉及 `my-ai` 內既有 WebAPI / BackgroundService / 前端專案時）。
 > 供 `@plan-executor` 與實作 agent 讀取；**禁止** 實作階段僅讀 `documents.md` 而略過本表列出的 OpenAPI `.json`。
-> 路徑一律相對於 `aidata` repo 根目錄（或 workspace 內 `./aidata/...`）。
+> 路徑一律相對於 `my-ai` repo 根目錄（或 workspace 內 `./my-ai/...`）。
 
 | 用途 | 路徑 | 讀取時機 / 備註 |
 |------|------|----------------|
@@ -673,7 +673,7 @@ path/to/file.ts    # 說明變更內容
 
 **填寫規則**
 
-- 主服務至少列出 **OpenAPI `.json` + `documents.md`**（若 aidata 存在該服務目錄）
+- 主服務至少列出 **OpenAPI `.json` + `documents.md`**（若 my-ai 存在該服務目錄）
 - §8.3「內部 / 第三方 API」每一列下游服務，本表須有對應 `{service}.json`（或明確標「無 OpenAPI，理由：…」）
 - 不適用時保留表格並填「不適用」列，**禁止** 整節省略
 
@@ -1022,9 +1022,9 @@ path/to/file.ts    # 說明變更內容
    - Implementation / PR 異動不得新增 Plan In Scope 與 File List 未列出的功能、UI 行為、API、DB table、背景 Job 或第三方整合。
    - 若出現 Plan 未列的新功能，預設視為不通過；應另開 Plan 或先更新本 Plan 並重新 Review。
 
-4. **Spec 參考文件檢查（涉及 aidata 服務時）**
+4. **Spec 參考文件檢查（涉及 my-ai 服務時）**
    - §11「Spec 參考文件」必須存在且為表格。
-   - 主服務須列 `webapi/{service}/{service}.json` 與 `documents.md`（或 `service/`、`frontend/` 對應路徑）；aidata 無該服務目錄時須在表內說明。
+   - 主服務須列 `webapi/{service}/{service}.json` 與 `documents.md`（或 `service/`、`frontend/` 對應路徑）；my-ai 無該服務目錄時須在表內說明。
    - §8.3 列出的每個內部 WebAPI 下游，§11 須有對應 OpenAPI 路徑或「無 OpenAPI」理由。
    - 禁止 Spec 表為空或僅寫服務名稱而無完整路徑。
 

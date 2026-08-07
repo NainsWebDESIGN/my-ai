@@ -1,4 +1,4 @@
-# 測試計畫規格 (TEST_PLAN_SPEC)
+﻿# 測試計畫規格 (TEST_PLAN_SPEC)
 
 由 `@test-maker` 觸發時載入。定義 `testplan.md`、xlsx 用例表、腳本產出的格式與 Gate 規則。
 
@@ -10,7 +10,7 @@
 |------|------|
 | Phase 順序 | 訪談 → testplan.md → ⛔ 確認 → xlsx → ⛔ 確認 → 腳本 |
 | ticketId | **必須向使用者詢問**；禁止自行編造或從檔名推斷 |
-| 輸入來源 | 使用者訪談、aidata、testscripts 既有資產、可選 `./_plans/{ticketId}.md` |
+| 輸入來源 | 使用者訪談、my-ai、testscripts 既有資產、可選 `./_plans/{ticketId}.md` |
 | 禁止來源 | **不使用 Jira、Confluence** 作為需求輸入 |
 | 待確認問題 | **永遠列在 testplan.md 最後一節**；有 ⬜ 且未接受風險 → Gate fail |
 | E2E 禁止模糊 | Toast / Dialog 須寫明完整文案，禁止「顯示成功」 |
@@ -93,7 +93,7 @@ xlsx「測試項目」前綴：`[正確場景]`、`[邊界場景]`、`[錯誤場
 
 ## 4. 參考文件
 
-- aidata：`aidata/{kind}/{service}/documents.md`
+- my-ai：`my-ai/{kind}/{service}/documents.md`
 - 可選 Plan：`./_plans/{ticketId}.md`
 - 參考 testcase / 腳本：{路徑}
 

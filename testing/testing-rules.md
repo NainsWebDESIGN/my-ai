@@ -1,4 +1,4 @@
-# 測試腳本規範
+﻿# 測試腳本規範
 
 由 `@test-maker`（腳本產出）與 `@ai-tester`（腳本執行）觸發時載入。適用於 testscripts repo 內的 Bruno（`.yml`）與 Playwright（`.ts`）腳本。
 
@@ -32,7 +32,7 @@ xlsx 由 `@test-maker` 產出；`@ai-tester` 以腳本 folder 為主，`xlsx` �
 
 | 允許 | 禁止 |
 |------|------|
-| 修改 testscripts repo 內的測試腳本 | 修改 `aidata/` 任何檔案 |
+| 修改 testscripts repo 內的測試腳本 | 修改 `my-ai/` 任何檔案 |
 | 修語法錯誤、補缺區塊、修正 typo | 未告知即刪除整個 test case |
 | 調整 selector（意圖不變） | 未告知即改變測試意圖或放寬斷言 |
 
@@ -49,7 +49,7 @@ xlsx 由 `@test-maker` 產出；`@ai-tester` 以腳本 folder 為主，`xlsx` �
 
 ### 須告知後修復
 
-- 修改 API path 或 HTTP method（須對照 aidata `documents.md`）
+- 修改 API path 或 HTTP method（須對照 my-ai `documents.md`）
 - 修改斷言條件（可能改變測試意圖）
 - 刪除或合併 test case
 
@@ -179,10 +179,10 @@ npx bru run communityservice/community-statistics-api-plan --env-file <env檔>
 
 ---
 
-## 與 aidata 的關係
+## 與 my-ai 的關係
 
-- 業務語意（API 路徑、錯誤碼、欄位意義）→ 查 `aidata/{kind}/{service}/documents.md`
-- 前端 E2E 頁面操作 → 查 `aidata/frontend/{project}/ui-context.md`（若存在）
-- 腳本與文件衝突 → 以 `documents.md` 為準修腳本，但不得修改 aidata 本身
+- 業務語意（API 路徑、錯誤碼、欄位意義）→ 查 `my-ai/{kind}/{service}/documents.md`
+- 前端 E2E 頁面操作 → 查 `my-ai/frontend/{project}/ui-context.md`（若存在）
+- 腳本與文件衝突 → 以 `documents.md` 為準修腳本，但不得修改 my-ai 本身
 
-服務對應：依 folder 路徑中的服務名稱，grep `aidata/webapi/_index.md`、`aidata/frontend/_index.md`、`aidata/service/_index.md` 確認 kind 與路徑。
+服務對應：依 folder 路徑中的服務名稱，grep `my-ai/webapi/_index.md`、`my-ai/frontend/_index.md`、`my-ai/service/_index.md` 確認 kind 與路徑。

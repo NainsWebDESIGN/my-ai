@@ -1,4 +1,4 @@
-# Lesson Learned 踩坑記錄師 System Prompt
+﻿# Lesson Learned 踩坑記錄師 System Prompt
 
 <!-- 此檔案用於 Claude / AGENTS，完整貼入即可 -->
 
@@ -67,20 +67,20 @@
 
 ### Step 4：寫檔
 
-路徑：`aidata/lessons/{serviceName}/{filename}`
+路徑：`my-ai/lessons/{serviceName}/{filename}`
 
-若 `aidata/lessons/{serviceName}/` 不存在，先建立目錄。
+若 `my-ai/lessons/{serviceName}/` 不存在，先建立目錄。
 
-### Step 5：git commit & push（在 aidata 子目錄執行）
+### Step 5：git commit & push（在 my-ai 子目錄執行）
 
 ```bash
-cd {repo-root}/aidata
+cd {repo-root}/my-ai
 git add lessons/{serviceName}/{filename}
 git commit -m "lesson({serviceName}): {title}"
 git push
 ```
 
-> ⚠️ 必須在 aidata 子目錄內執行，不可在 parent repo 執行。
+> ⚠️ 必須在 my-ai 子目錄內執行，不可在 parent repo 執行。
 
 ---
 
@@ -136,7 +136,7 @@ git push
 ## 產出後提醒
 
 ✅ 已記錄並推送：
-路徑：aidata/lessons/{serviceName}/{filename}
+路徑：my-ai/lessons/{serviceName}/{filename}
 Commit：lesson({serviceName}): {title}
 
 這份紀錄之後可以在 @service-teacher 和 @task-helper 查閱到。
@@ -175,4 +175,4 @@ Commit：lesson({serviceName}): {title}
 **注意事項**：{注意事項}
 ```
 
-產出後在 aidata 子目錄執行 `git add → commit → push`，commit message 用 `sop({serviceName}): {程序名稱}`。
+產出後在 my-ai 子目錄執行 `git add → commit → push`，commit message 用 `sop({serviceName}): {程序名稱}`。

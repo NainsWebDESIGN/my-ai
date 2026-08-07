@@ -1,4 +1,4 @@
-### my-ai
+﻿### my-ai
 
 - 前端專用的 AI 輔助開發規範倉庫（submodule）。同時支援 **Vue / Nuxt** 與 **Angular** 兩種前端框架。作為專案的 `my-ai/` 子模組使用。
 - [參考 aidata](https://git.zbdigital.net/architecture/aidata.git)
@@ -44,7 +44,7 @@ my-ai/
 ├── CLAUDE.md / AGENTS.md    ← AI 自動讀取的入口
 ├── PLAN_SPEC.md             ← Plan 規格書規範（含 Vue/Nuxt + Angular Phase）
 ├── performance-rules.md     ← 效能規範
-├── systemprompts/           ← 引導師 prompt（10 個）
+├── systemprompts/           ← 引導師 prompt（12 個）
 ├── testing/                 ← 測試規範
 └── templates/
     ├── vue-template/          ← Nuxt 3 + Vuetify 起始模板
@@ -197,13 +197,13 @@ others/stock_bussiness-documents.md → 股票業務
 
 ---
 
-| 判斷機制              | 動作                                                                                     |
-| --------------------- | ---------------------------------------------------------------------------------------- |
-| 第2層 alwaysApply     | 載入 `coding-behavior.md`（先想清楚、不改多餘的）                                        |
-| 第2層 alwaysApply     | 載入 `general.md`→ 看到提新功能 → 觸發 `@plan-maker`                                     |
-| 第5層 引導師          | 載入 `plan-maker-prompt.md`，開始訪談需求                                                |
-| 訪談完畢後開始改 Code | 第3層 偵測到 `.vue` → 無 glob 自動觸發                                                   |
-| 第4層 - .rules.md     | 讀取 `pricefrontendsite` repo 根目錄的 `.rules.md`或`.clinerule.md`（前端規範）          |
-| 第6層 業務知識        | 讀 `aidata/frontend/_index.md` → 找到 `pricefrontendsite/documents.md`，了解賠率業務邏輯 |
-| 第2層 Branch Gate     | 檢查是否在 main/master，是否需要切分支                                                   |
-| 開始寫 Code           | 遵守 coding-behavior 四原則：簡潔、精準、不亂改                                          |
+| 判斷機制              | 動作                                                                                    |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| 第2層 alwaysApply     | 載入 `coding-behavior.md`（先想清楚、不改多餘的）                                       |
+| 第2層 alwaysApply     | 載入 `general.md`→ 看到提新功能 → 觸發 `@plan-maker`                                    |
+| 第5層 引導師          | 載入 `plan-maker-prompt.md`，開始訪談需求                                               |
+| 訪談完畢後開始改 Code | 第3層 偵測到 `.vue` → 無 glob 自動觸發                                                  |
+| 第4層 - .rules.md     | 讀取 `pricefrontendsite` repo 根目錄的 `.rules.md`或`.clinerule.md`（前端規範）         |
+| 第6層 業務知識        | 讀 `my-ai/frontend/_index.md` → 找到 `pricefrontendsite/documents.md`，了解賠率業務邏輯 |
+| 第2層 Branch Gate     | 檢查是否在 main/master，是否需要切分支                                                  |
+| 開始寫 Code           | 遵守 coding-behavior 四原則：簡潔、精準、不亂改                                         |
