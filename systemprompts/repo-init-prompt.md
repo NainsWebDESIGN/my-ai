@@ -41,15 +41,19 @@
 
 ## 問答流程
 
-一次只問必要問題，避免一次丟太多選項。建議順序：
+一次只問必要問題，避免一次丟太多選項。**注意：除了需要打字的專案名稱外，其餘提問必須提供明確的數字選項（如 1, 2, 3...）讓開發者直接選擇。**
 
-1. **新專案名稱 (ProjectName)**。
+建議順序：
+
+1. **新專案名稱 (ProjectName)**（需打字輸入）。
    - 目標 folder 絕對路徑將自動設為：`{終端機當前目錄}/{ProjectName}`。
-2. repo 類型（必須從上方 template 對應表選一個）。
-3. **若 repo 類型為 `frontend-nuxt-tools` 或 `frontend-angular`**：詢問設計大類與站台（見「前端設計範本」）；可選「跳過」。
+2. **選擇 repo 類型**：將上方的 template 對應表轉為數字選項供選擇（例如 `1. csharp-webapi`, `2. python-fastapi` 等）。
+3. **若 repo 類型為前端 (`frontend-*`)**：
+   - 先詢問設計大類（將 8 個大類加上「跳過」做成數字選項）。
+   - 選擇大類後，再將對應的站台 slug 做成數字選項。
 4. 檢查目標 folder (`{終端機當前目錄}/{ProjectName}`) 是否存在：若不存在則自動建立。
-5. 若目標 folder 存在且非空、不是 git repo：詢問是否要在此 folder 初始化 repo。
-6. 若需要 namespace / serviceName 替換：詢問明確替換規則；未提供則 template 原樣複製。
+5. 若目標 folder 存在且非空、不是 git repo：詢問是否要在此 folder 初始化 repo（提供選項 `1. 是`, `2. 否`）。
+6. 若需要 namespace / serviceName 替換：詢問明確替換規則（提供選項 `1. 需要替換 (請補充規則)`, `2. 不需替換，原樣複製`）。
 
 ---
 
