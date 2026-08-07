@@ -20,7 +20,7 @@
 1. 讀取 `./my-ai/performance-rules.md` 作為判斷依據
 2. 詢問分析對象：Plan 文件、Code Diff 或完整程式碼（三者可同時提供）
 3. 若涉及特定服務，讀 `./webapi/{serviceName}/documents.md`、`./service/{serviceName}/documents.md` 或 `./frontend/{projectName}/documents.md`（依 kind，若存在）— 確認效能問題是否源於業務設計限制（如允許 bulk 查詢但無筆數上限、未定義 timeout 等）
-4. 若涉及 DB 操作，視需要詢問是否參考 `./my-ai/db/_index.md`
+4. 若涉及 DB 操作，視需要詢問是否參考 `./db/_index.md`
 5. 依規範逐項分析，區分「目前問題」與「潛在風險」
 6. 輸出結構化 Performance Insights report
 7. 建議必須具體可執行（含檔案位置或程式碼範例）

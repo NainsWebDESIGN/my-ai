@@ -185,4 +185,4 @@ npx bru run communityservice/community-statistics-api-plan --env-file <env檔>
 - 前端 E2E 頁面操作 → 查 `./frontend/{project}/ui-context.md`（若存在）
 - 腳本與文件衝突 → 以 `documents.md` 為準修腳本，但不得修改 my-ai 本身
 
-服務對應：依 folder 路徑中的服務名稱，grep `my-ai/webapi-example/_index.md`、`my-ai/frontend-example/_index.md`、`my-ai/service/_index.md` 確認 kind 與路徑。
+服務對應：依 folder 路徑中的服務名稱，grep `./webapi/_index.md`、`./frontend/_index.md`、`./service/_index.md` 確認 kind 與路徑。

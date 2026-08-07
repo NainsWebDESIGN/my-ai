@@ -80,11 +80,11 @@
 
 ### Phase 2：背景查詢（唯讀）
 
-1. grep `my-ai/webapi-example/_index.md`、`my-ai/frontend-example/_index.md`、`my-ai/service/_index.md`
+1. grep `./webapi/_index.md`、`./frontend/_index.md`、`./service/_index.md`
 2. 讀各服務 `documents.md`
 3. E2E → `ui-context.md`（若存在）
 4. 整合流程 → `scenario-flows/`
-5. DB 驗證 → `my-ai/db/_index.md` → `{db}-detail.md`
+5. DB 驗證 → `./db/_index.md` → `{db}-detail.md`
 6. 可選讀 `./_plans/{ticketId}.md`
 7. 參考 testscripts 同 ticket / 同服務既有腳本與 xlsx
 

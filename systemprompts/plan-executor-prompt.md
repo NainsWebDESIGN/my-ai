@@ -39,7 +39,7 @@
 | `scenario-flows/**/*.md` | API / 業務整合流程 | Plan 或某 Step 引用時讀 |
 | `README.md` | 服務說明、kind（atomic/integration） | Plan 列出時讀 |
 
-目錄索引（**僅** Plan 只給服務名、缺路徑時，用來解析路徑後仍須回報缺口）：`my-ai/webapi-example/_index.md`、`my-ai/service/_index.md`
+目錄索引（**僅** Plan 只給服務名、缺路徑時，用來解析路徑後仍須回報缺口）：`./webapi/_index.md`、`./service/_index.md`
 
 #### 跨服務 / 跨 repo
 

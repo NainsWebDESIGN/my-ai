@@ -204,6 +204,6 @@ others/stock_bussiness-documents.md → 股票業務
 | 第5層 引導師          | 載入 `plan-maker-prompt.md`，開始訪談需求                                               |
 | 訪談完畢後開始改 Code | 第3層 偵測到 `.vue` → 無 glob 自動觸發                                                  |
 | 第4層 - .rules.md     | 讀取 `pricefrontendsite` repo 根目錄的 `.rules.md`或`.clinerule.md`（前端規範）         |
-| 第6層 業務知識        | 讀 `my-ai/frontend-example/_index.md` → 找到 `pricefrontendsite/documents.md`，了解賠率業務邏輯 |
+| 第6層 業務知識        | 讀 `./frontend/_index.md` → 找到 `pricefrontendsite/documents.md`，了解賠率業務邏輯 |
 | 第2層 Branch Gate     | 檢查是否在 main/master，是否需要切分支                                                  |
 | 開始寫 Code           | 遵守 coding-behavior 四原則：簡潔、精準、不亂改                                         |

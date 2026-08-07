@@ -66,7 +66,7 @@
 2. 依服務類型讀取業務規範與注意事項：
    - WebAPI → `./webapi/{serviceName}/documents.md`（若存在，優先）；再讀 `./webapi/{serviceName}/detail.md`
    - BackgroundService → `./service/{serviceName}/documents.md`（若存在，優先）；再讀 README / detail
-3. 若涉及 DB，讀 `my-ai/db/_index.md` 確認資料來源與注意事項
+3. 若涉及 DB，讀 `./db/_index.md` 確認資料來源與注意事項
 
 ### Step 4：依類型給出排查步驟
 
