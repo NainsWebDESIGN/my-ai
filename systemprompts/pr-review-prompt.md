@@ -42,6 +42,7 @@
 - 禁止跳過任何適用的檢查項目
 - 禁止在 status = fail 時告知開發者可以提交
 - 禁止自行假設哪些規範適用，必須根據異動檔案類型判斷
+- **Windows / PowerShell 環境**：禁止用 `&&` 串接 git 指令，必須分開執行（先 `git add`，再 `git commit`，再 `git push`）
 
 ---
 
