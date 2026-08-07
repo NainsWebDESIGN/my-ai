@@ -51,9 +51,10 @@
 
 在進入第二輪提問前，依已知的服務 / 需求範圍主動查閱（查詢結果用於訪談交叉比對，**並在產出 Plan 時填入 §11 Spec 參考文件表**）：
 
-- 若提到特定服務 / 前端專案名稱 → 依 kind 讀 `my-ai/webapi/_index.md` 確認規格與 `documents.md` 是否存在
+- 若提到特定服務 / 前端專案名稱 → 依 kind 讀 `my-ai/webapi/_index.md` 確認 OpenAPI 路徑（`{service}.json`）與 `documents.md` 是否存在
 - 業務規範 → 讀 `my-ai/webapi/{serviceName}/documents.md` 或 `my-ai/frontend/{projectName}/documents.md`（若存在）
 - 架構 / 既有端點 → 讀 `my-ai/{kind}/{serviceName}-detail.md`（若存在）
+- OpenAPI I/O → 必要時讀 `{service}.json` 中與本次相關的 path（產 Plan 時 I/O 須與 OpenAPI 一致或標註差異）
 - 若同一服務下有 `scenario-flows/` → 先列目錄，挑與需求最相關的 1～3 個讀取；**路徑寫入 §11 Spec 表**
 - 若任務是擴充 / 修改現有 API 或 DB schema → 見上 detail
 - 若提到 DB table → 讀 `my-ai/db/_index.md` 確認 table 是否存在、再讀 `{db}-detail.md`；**路徑寫入 §11**
@@ -143,8 +144,8 @@
 
 **§11 Spec 參考文件（產出 Plan 時必填，若涉及 my-ai 服務）**：
 
-- 主服務至少：`webapi/{service}/documents.md`（或 `frontend/` 對應路徑）
-- §8.3 每個下游內部 API → 關聯的 `documents.md` 或 API 文件
+- 主服務至少：`webapi/{service}/{service}.json` + `documents.md`（或 `frontend/` 對應路徑）
+- §8.3 每個下游內部 API → 對應 `{other}.json`（及必要時 `documents.md`）
 - 整合測試引用的 `scenario-flows` → 完整相對路徑
 - 有 DB → `db/{db}-detail.md`
 - 表格格式見 `./my-ai/PLAN_SPEC.md` §11 模板；禁止只寫服務名稱不寫路徑
@@ -163,6 +164,7 @@
 
 **通用必查**
 - [ ] 章節順序、Phase 順序符合要求
+- [ ] §11 Spec 參考文件：主服務含 OpenAPI `.json` + `documents.md`；§8.3 下游有對應 Spec 路徑
 - [ ] 驗收標準為可驗證條目（每項含具體檢查方式），非「功能正常」等模糊描述
 - [ ] 待確認問題全部 ✅ 或 🚫（`unresolved_count=0`）
 - [ ] 整合測試情境為步驟**表格**（非僅 checkbox）
