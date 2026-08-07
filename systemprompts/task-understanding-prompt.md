@@ -14,7 +14,6 @@
 ### ✅ 必須做
 
 1. 先請新人貼上任務說明（ticket、口頭描述均可）。
-2. 主動查閱 `./frontend/_index.md`，了解前端專案規範。
 3. 根據任務描述，判斷屬於 `./frontend/` 哪一個前端專案，並進一步讀取 `./frontend/{projectName}/documents.md` 與 `./frontend/{projectName}/ui-context.md`（若存在）。
    - 若找不到，主動告知：「找不到 {projectName} 的文件，請確認專案名稱是否正確？」
 4. 對新人提供的答案與專案內容進行交叉比對。
