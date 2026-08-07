@@ -39,7 +39,7 @@
 | `scenario-flows/**/*.md` | API / 業務整合流程 | Plan 或某 Step 引用時讀 |
 | `README.md` | 服務說明、kind（atomic/integration） | Plan 列出時讀 |
 
-目錄索引（**僅** Plan 只給服務名、缺路徑時，用來解析路徑後仍須回報缺口）：`my-ai/webapi/_index.md`、`my-ai/service/_index.md`
+目錄索引（**僅** Plan 只給服務名、缺路徑時，用來解析路徑後仍須回報缺口）：`my-ai/webapi-example/_index.md`、`my-ai/service/_index.md`
 
 #### 跨服務 / 跨 repo
 
@@ -230,8 +230,8 @@ code 讀取由 Step 卡授權 coding agent 在 §10 範圍內有限讀取。
 
 ## Spec 已讀（executor 首次填入；Resume 可略讀 my-ai）
 
-- [x] `my-ai/webapi/{service}/{service}.json`
-- [x] `my-ai/webapi/{service}/documents.md`
+- [x] `my-ai/webapi-example/{service}/{service}.json`
+- [x] `my-ai/webapi-example/{service}/documents.md`
 
 ## 進度（快速 Resume）
 
@@ -328,9 +328,9 @@ code 讀取由 Step 卡授權 coding agent 在 §10 範圍內有限讀取。
 
 ✅ Spec 必讀（本步子集；Resume 且 steps 檔 Spec 已讀可註「已讀可略」）：
 - Plan §{x}.{y}
-- `my-ai/webapi/{service}/{service}.json` — 端點 {Method} {Path}（Plan 列出的完整路徑）
-- `my-ai/webapi/{service}/documents.md` §{章節}（業務規則，Plan 有列才讀）
-- （跨服務時）`my-ai/webapi/{other}/{other}.json`（Plan Spec 參考文件表列）
+- `my-ai/webapi-example/{service}/{service}.json` — 端點 {Method} {Path}（Plan 列出的完整路徑）
+- `my-ai/webapi-example/{service}/documents.md` §{章節}（業務規則，Plan 有列才讀）
+- （跨服務時）`my-ai/webapi-example/{other}/{other}.json`（Plan Spec 參考文件表列）
 
 ✅ Coding style（實作 agent 專用，本步若涉及前端/UI/.vue 等）：
 - 目標 repo `./.rules.md`

@@ -16,9 +16,9 @@
 1. 先取得症狀描述與環境（開發 / 測試 / 正式）
 2. 主動查閱：
    - `my-ai/lessons/{serviceName}/` — 是否有類似的歷史踩坑紀錄
-   - `my-ai/webapi/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend/{projectName}/documents.md`（依 kind，若存在）— 業務規範與已知限制；再讀 `*-detail.md` 或 README 補充技術細節
+   - `my-ai/webapi-example/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend-example/{projectName}/documents.md`（依 kind，若存在）— 業務規範與已知限制；再讀 `*-detail.md` 或 README 補充技術細節
    - 若 **找不到 documents.md**，主動告知：「找不到 {名稱} 的文件，請確認服務名稱是否正確？」（除非使用者已說明為新服務）
-   - `my-ai/webapi/{serviceName}/scenario-flows/`（若存在）— 先列目錄，挑與症狀相關的流程讀取，了解正常業務流程以定位是哪一步出錯
+   - `my-ai/webapi-example/{serviceName}/scenario-flows/`（若存在）— 先列目錄，挑與症狀相關的流程讀取，了解正常業務流程以定位是哪一步出錯
 3. 依服務類型（WebAPI / BackgroundService / 前端）與錯誤類別給出針對性排查步驟
 4. 每次只給一個排查方向，等開發者回報結果後再繼續
 5. 問題解決後主動建議：「要把這次的根本原因記錄下來嗎？說 `@lesson-learned` 就可以。」
@@ -64,7 +64,7 @@
 
 1. 讀 `my-ai/lessons/{serviceName}/` — 有沒有類似的歷史紀錄，若有直接呈現
 2. 依服務類型讀取業務規範與注意事項：
-   - WebAPI → `my-ai/webapi/{serviceName}/documents.md`（若存在，優先）；再讀 `my-ai/webapi/{serviceName}-detail.md`
+   - WebAPI → `my-ai/webapi-example/{serviceName}/documents.md`（若存在，優先）；再讀 `my-ai/webapi-example/{serviceName}-detail.md`
    - BackgroundService → `my-ai/service/{serviceName}/documents.md`（若存在，優先）；再讀 README / detail
 3. 若涉及 DB，讀 `my-ai/db/_index.md` 確認資料來源與注意事項
 

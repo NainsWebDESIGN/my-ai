@@ -81,8 +81,8 @@
 | Python 同步 Service | `./my-ai/python/service/.cursor/rules/service-rule.mdc` |
 | Python 爬蟲（Provider / Parser） | `./my-ai/python/crawler/.cursor/rules/`（依專案名稱辨識類型後，篩選載入標示 Provider / Parser / 通用的規則） |
 | 有對應 Plan 或異動 `_plans/*.md` | `./my-ai/PLAN_SPEC.md` |
-| 前端 | `./my-ai/frontend/_index.md` 對應站台資訊；若有 `my-ai/frontend/{projectName}/documents.md` 一併讀取業務規範 |
-| 任何後端服務（有 `documents.md`） | 讀 `my-ai/webapi/{serviceName}/documents.md` 或 `my-ai/service/{serviceName}/documents.md`（依 kind）— 驗證實作是否符合業務規範（狀態機、業務限制、必填條件等） |
+| 前端 | `./my-ai/frontend-example/_index.md` 對應站台資訊；若有 `my-ai/frontend-example/{projectName}/documents.md` 一併讀取業務規範 |
+| 任何後端服務（有 `documents.md`） | 讀 `my-ai/webapi-example/{serviceName}/documents.md` 或 `my-ai/service/{serviceName}/documents.md`（依 kind）— 驗證實作是否符合業務規範（狀態機、業務限制、必填條件等） |
 | PR 新增或修改 endpoint / DTO / schema | 讀 `my-ai/{kind}/{serviceName}-detail.md`（若存在）— 確認新設計是否與現有架構一致，避免重複定義或命名衝突 |
 
 > **找不到 documents.md 時**：主動告知提交者「找不到 {名稱} 的文件，請確認服務名稱 / kind 是否正確？」，除非提交者已說明為新服務，則跳過業務規範驗證。
@@ -109,7 +109,7 @@
 
 #### 若偵測到 🔴 Breaking
 
-1. 讀 `my-ai/webapi/_index.md`，找出本服務的呼叫方或下游相依服務
+1. 讀 `my-ai/webapi-example/_index.md`，找出本服務的呼叫方或下游相依服務
 2. 若 `_index.md` 資訊不足，詢問開發者：「哪些服務或前端站台會呼叫這個 API？」
 3. 列出受影響呼叫方，**要求開發者確認後才能繼續**：
 

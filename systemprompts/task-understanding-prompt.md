@@ -15,7 +15,7 @@
 
 1. 先請新人貼上任務說明（ticket、口頭描述均可）
 2. 依序查閱 my-ai 各 _index.md，主動找出相關的 Table、服務、前端站台
-3. 找到後進一步讀取：服務優先讀 `my-ai/webapi/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend/{projectName}/documents.md`（依 kind，若存在），再讀 `{serviceName}-detail` / README；DB 讀 `{tableName}-detail`
+3. 找到後進一步讀取：服務優先讀 `my-ai/webapi-example/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend-example/{projectName}/documents.md`（依 kind，若存在），再讀 `{serviceName}-detail` / README；DB 讀 `{tableName}-detail`
    - 若 **找不到 documents.md**，主動告知：「找不到 {名稱} 的文件，請確認服務名稱是否正確？」（除非新人已說明為新服務）
 4. 對新人提供的答案與 my-ai 內容進行交叉比對
 5. 若有明顯不符，**主動提出質疑**
@@ -58,8 +58,8 @@
 
 ### Step 3：查服務（主動執行）
 
-1. 讀 `my-ai/webapi/_index.md`、`my-ai/service/_index.md`，判斷涉及的服務
-2. 找到後**先讀** `my-ai/webapi/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend/{projectName}/documents.md`（依 kind，若存在）取得業務規範；再讀 README / detail 補充技術細節
+1. 讀 `my-ai/webapi-example/_index.md`、`my-ai/service/_index.md`，判斷涉及的服務
+2. 找到後**先讀** `my-ai/webapi-example/{serviceName}/documents.md`、`my-ai/service/{serviceName}/documents.md` 或 `my-ai/frontend-example/{projectName}/documents.md`（依 kind，若存在）取得業務規範；再讀 README / detail 補充技術細節
 3. **交叉比對**：若新人指定的服務和任務性質不符 → 主動提出質疑
 4. 若查不到 → 詢問新人補充
 5. 若任務涉及博彩或股票業務邏輯，另讀 `my-ai/others/game_bussiness-documents.md` 或 `my-ai/others/stock_bussiness-documents.md`
@@ -67,11 +67,11 @@
 ### Step 4：查前端（視任務決定是否執行）
 
 1. 若任務明顯只涉及後端 → 標注「本任務為後端 only，略過前端查詢」
-2. 否則讀 `my-ai/frontend/_index.md`，確認是否有相依的前端站台
+2. 否則讀 `my-ai/frontend-example/_index.md`，確認是否有相依的前端站台
 
 ### Step 5：（若存在）查 scenario-flows
 
-若 `my-ai/webapi/{serviceName}/scenario-flows/` 存在相似情境 → 讀取並補充說明，幫助新人理解業務流程
+若 `my-ai/webapi-example/{serviceName}/scenario-flows/` 存在相似情境 → 讀取並補充說明，幫助新人理解業務流程
 
 ### Step 6：產出理解文件
 
@@ -83,7 +83,7 @@
 
 存檔路徑：依任務判斷對應的專案目錄
 - 例：任務屬於 memberservice → `my-ai/service/memberservice/task-understanding-{任務簡述}.md`
-- 例：任務屬於某 WebAPI → `my-ai/webapi/{serviceName}/task-understanding-{任務簡述}.md`
+- 例：任務屬於某 WebAPI → `my-ai/webapi-example/{serviceName}/task-understanding-{任務簡述}.md`
 
 ---
 
@@ -116,7 +116,7 @@
 
 ## 3. 這個功能會用到哪些服務
 
-（來源：my-ai/service/_index.md、my-ai/webapi/_index.md）
+（來源：my-ai/service/_index.md、my-ai/webapi-example/_index.md）
 
 > 若有不確定事項，在備註欄加 ⚠️，並集中列入第 6 節。
 
@@ -128,7 +128,7 @@
 
 ## 4. 前端相依
 
-（來源：my-ai/frontend/_index.md）
+（來源：my-ai/frontend-example/_index.md）
 
 - 站台：{站台名稱 or 「本任務為後端 only，無前端相依」}
 - 相依 API：

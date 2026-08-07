@@ -61,8 +61,8 @@
 
 依 folder 路徑中的服務名稱，對應 my-ai：
 
-1. grep `my-ai/webapi/_index.md` 是否有該服務
-2. grep `my-ai/frontend/_index.md` 或檢查 `my-ai/frontend/{name}/`
+1. grep `my-ai/webapi-example/_index.md` 是否有該服務
+2. grep `my-ai/frontend-example/_index.md` 或檢查 `my-ai/frontend-example/{name}/`
 3. grep `my-ai/service/_index.md`（BackgroundService）
 
 讀取（若存在）：

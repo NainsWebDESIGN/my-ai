@@ -80,7 +80,7 @@
 
 ### Phase 2：背景查詢（唯讀）
 
-1. grep `my-ai/webapi/_index.md`、`my-ai/frontend/_index.md`、`my-ai/service/_index.md`
+1. grep `my-ai/webapi-example/_index.md`、`my-ai/frontend-example/_index.md`、`my-ai/service/_index.md`
 2. 讀各服務 `documents.md`
 3. E2E → `ui-context.md`（若存在）
 4. 整合流程 → `scenario-flows/`
