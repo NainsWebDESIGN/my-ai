@@ -82,7 +82,7 @@ chmod +x start-headroom.sh
 1. API Provider → **OpenAI Compatible**
 2. **Base URL** → `http://127.0.0.1:8787/v1`
 3. **API Key** → 隨便填（例如 `headroom`，真正的 key 由 proxy 轉送）
-4. **Model** → 你要用的 AI Provider 模型名
+4. **Model** → 你要用的 AI Provider 模型名（例如 `AI Provider-chat`）
 
 ---
 
@@ -111,7 +111,9 @@ chmod +x start-headroom.sh
         "headroom_retrieve",
         "headroom_compress",
         "headroom_stats"
-      ]
+      ],
+      "autoApprove": [],
+      "timeout": 300
     }
   }
 }
@@ -120,8 +122,24 @@ chmod +x start-headroom.sh
 - `command`：Mac 通常用 `headroom`。Windows 若 Cline 找不到，改成完整路徑（用 `(Get-Command headroom).Source` 查），例如 `C:\Users\<使用者名稱>\AppData\Local\Programs\Python\Python314\Scripts\headroom.exe`。
 - `args`：`mcp serve --proxy-url http://127.0.0.1:8787`（指向正在跑的 proxy）。
 - `alwaysAllow`：自動放行這 3 個工具，避免每次跳出確認框。
+- `timeout`：headroom 偶爾回應較慢，把 MCP 逾時從預設 60 秒拉長到 300 秒（5 分鐘），避免 `headroom_stats` 回傳 `-32001` 逾時錯誤。
 
-改完後**重載 Cline**：VS Code 按 `Ctrl+Shift+P` → 執行 `Developer: Reload Window`。
+改完後**重載 Cline**：VS Code 按 `Ctrl+Shift+P`（Mac 按 `Cmd+Shift+P`）→ 執行 `Developer: Reload Window`。
+
+---
+
+## Windows vs Mac 差異總整理
+
+| 項目              | Windows                                                          | Mac                                                            |
+| ----------------- | ---------------------------------------------------------------- | -------------------------------------------------------------- |
+| Python 安裝       | 官網安裝檔，勾「Add Python to PATH」                             | `brew install python@3.13`                                     |
+| Python 指令       | `python`                                                         | `python3`                                                      |
+| pip 指令          | `pip`                                                            | `pip` 或 `pip3`                                                |
+| 啟動 proxy 腳本   | `start-headroom.ps1`                                             | `start-headroom.sh`                                            |
+| 執行腳本          | `powershell -ExecutionPolicy Bypass -File "start-headroom.ps1"`  | `chmod +x start-headroom.sh && ./start-headroom.sh`            |
+| MCP 設定檔路徑    | `C:\Users\<使用者>\.cline\data\settings\cline_mcp_settings.json` | `/Users/<使用者>/.cline/data/settings/cline_mcp_settings.json` |
+| MCP `command`     | 可能需填完整路徑（`...\headroom.exe`）                           | 通常直接 `headroom`                                            |
+| 重載 Cline 快捷鍵 | `Ctrl+Shift+P`                                                   | `Cmd+Shift+P`                                                  |
 
 ---
 
