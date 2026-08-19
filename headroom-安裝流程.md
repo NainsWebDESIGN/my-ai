@@ -107,12 +107,11 @@ chmod +x start-headroom.sh
     "headroom": {
       "command": "headroom",
       "args": ["mcp", "serve", "--proxy-url", "http://127.0.0.1:8787"],
-      "alwaysAllow": [
-        "headroom_retrieve",
+      "autoApprove": [
         "headroom_compress",
+        "headroom_retrieve",
         "headroom_stats"
       ],
-      "autoApprove": [],
       "timeout": 300
     }
   }
@@ -121,10 +120,40 @@ chmod +x start-headroom.sh
 
 - `command`：Mac 通常用 `headroom`。Windows 若 Cline 找不到，改成完整路徑（用 `(Get-Command headroom).Source` 查），例如 `C:\Users\<使用者名稱>\AppData\Local\Programs\Python\Python314\Scripts\headroom.exe`。
 - `args`：`mcp serve --proxy-url http://127.0.0.1:8787`（指向正在跑的 proxy）。
-- `alwaysAllow`：自動放行這 3 個工具，避免每次跳出確認框。
+- `autoApprove`：**開啟核准（自動放行）** — 把要放行的工具名稱寫進這個陣列（如上範例的 3 個），這些工具就不再跳出確認框。**關閉核准（每次都問）** — 改成空陣列 `"autoApprove": []`。
+- ⚠️ 舊版 key 是 `alwaysAllow`，現行 Cline（v4.x）已改用 `autoApprove`。若寫了 `alwaysAllow` 仍一直跳出確認框，就是 key 名稱過時，改用 `autoApprove` 即可。
 - `timeout`：headroom 偶爾回應較慢，把 MCP 逾時從預設 60 秒拉長到 300 秒（5 分鐘），避免 `headroom_stats` 回傳 `-32001` 逾時錯誤。
 
 改完後**重載 Cline**：VS Code 按 `Ctrl+Shift+P`（Mac 按 `Cmd+Shift+P`）→ 執行 `Developer: Reload Window`。
+
+---
+
+## 步驟 6：自動批准 MCP 工具（開啟／關閉核准）
+
+headroom 的 3 個工具（`headroom_compress` / `headroom_retrieve` / `headroom_stats`）都是唯讀操作（壓縮、取回、統計），沒有寫入或破壞性副作用，建議開啟自動批准，避免每次對話都要手動批准。
+
+### 方式 A：全域開關（對所有 MCP server 生效）
+
+開啟 Cline **Settings（齒輪）→ Auto Approve**，找到 **「Use MCP servers」**：
+
+- **開啟核准（自動放行）**：勾選「Use MCP servers」→ 所有 MCP 工具不再跳出確認框。
+- **關閉核准（每次都問）**：取消勾選 → 每次呼叫 MCP 工具都要手動批准。
+
+> 對應設定檔（`globalState.json`）的 `autoApprovalSettings.actions.useMcp`：`true` = 開啟、`false` = 關閉。改檔後需重載 Cline 才生效。
+
+### 方式 B：單一 server 精準放行（推薦，只放行 headroom）
+
+在 MCP 設定檔的 `headroom` server 內設定 `autoApprove` 陣列（即步驟 5 的範例）：
+
+- **開啟核准（只放行這 3 個工具）**：把工具名稱寫進 `autoApprove`：
+
+  ```json
+  "autoApprove": ["headroom_compress", "headroom_retrieve", "headroom_stats"]
+  ```
+
+- **關閉核准（每次都問）**：清空成 `"autoApprove": []`。
+
+> ⚠️ 舊版 key 是 `alwaysAllow`，現行 Cline（v4.x）改用 `autoApprove`。若發現寫了 `alwaysAllow` 仍一直跳出確認框，就是 key 名稱過時，改用 `autoApprove` 即可。
 
 ---
 
