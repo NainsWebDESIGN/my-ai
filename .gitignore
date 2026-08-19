@@ -2,3 +2,7 @@
 .DS_Store
 Thumbs.db
 .specstory
+.vscode
+
+package-lock.json
+node_modules/
