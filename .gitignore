@@ -4,5 +4,6 @@ Thumbs.db
 .specstory
 .vscode
 
+pnpm-lock.yaml
 package-lock.json
 node_modules/
