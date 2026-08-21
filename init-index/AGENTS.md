@@ -1,8 +1,16 @@
-# Antigravity 前端規範入口 (基於 clinerule.md)
+## My-AI 規則索引
 
-> **[核心 AI 指令]**
-> 作為 Antigravity AI 助理，你在開始執行任何任務前，必須**優先發動讀取檔案工具**，閱讀並嚴格遵守下列索引檔案：
-> 👉 `my-ai/AGENTS.md`
+本 workspace 共用 ma-ai 目錄，所有 AI 引導師、編碼規範、服務文件統一存放於：
+
+> **Aidata Root：** `./my-ai/AGENTS.md`
+
+---
+
+## headroom proxy 說明
+
+1. 本機跑 `headroom proxy`（預設 http://127.0.0.1:8787），Cline 的 Base URL 指向它（OpenAI 相容格式需加 `/v1`）。
+2. 若 API 連線失敗（連不上 / 503），先確認 proxy terminal 是否仍執行中。
+3. 大型 tool 輸出會被 headroom 壓縮；若內容出現 `<<ccr:hash,type,size>>` 佔位符且需要原文，呼叫 MCP 工具 `headroom_retrieve` 取回。
 
 ---
 
@@ -29,54 +37,80 @@
 
 ---
 
-## 專案資訊
+## 每次對話啟動規則
 
-| 項目     | 值                                         |
-| -------- | ------------------------------------------ |
-| 專案類型 | 前端（Frontend）                           |
-| 框架     | （請依實際專案填寫：Vue / Nuxt / Angular） |
-| 規範倉庫 | `./my-ai/`（submodule）                    |
+**每次對話開始時，先檢查以下兩處，確認「有哪些步驟」與「執行到哪裡」：**
 
----
+1. `D:\GitLab\拆解步驟\` — 查看已拆解的工作步驟清單（若有），了解總共有哪些步驟要執行。
+2. `D:\GitLab\session-log\` — 查看最新記錄檔，確認目前執行到哪一步、是否有未完成的工作或待辦事項。
 
-## my-ai 規範索引
-
-本 repo 使用 `my-ai/` 作為 AI 輔助開發規範的子模組。以下為關鍵參考檔案：
-
-| 類型                      | 路徑                              | 說明                                         |
-| ------------------------- | --------------------------------- | -------------------------------------------- |
-| **AI 總入口（必須讀取）** | `my-ai/AGENTS.md`                 | 專案完整規範、行為準則、框架設定與引導師系統 |
-| AI 行為準則 (Claude)      | `my-ai/CLAUDE.md`                 | 核心四原則等 AI 行為準則                     |
-| Plan 規格書規範           | `my-ai/PLAN_SPEC.md`              | Plan 撰寫結構、Phase 順序、I/O 規範          |
-| 效能規範                  | `my-ai/performance-rules.md`      | 大量資料渲染、API 批次呼叫、WebSocket 效能   |
-| 測試計畫規範              | `my-ai/testing/TEST_PLAN_SPEC.md` | 測試計畫撰寫規範                             |
-| 測試腳本規範              | `my-ai/testing/testing-rules.md`  | 測試腳本撰寫規範                             |
+若有相關記錄，主動告知使用者目前進度，並詢問是否繼續。
 
 ---
 
-## 專案自訂規則
+## AI 編碼行為準則
 
-> 以下為專案級別的客製化設定：
+| 類型             | 位置                                                                       |
+| ---------------- | -------------------------------------------------------------------------- |
+| 核心行為準則     | `{AIDATA}/generalrules/.cursor/rules/coding-behavior.mdc`（`alwaysApply`） |
+| Plan 規範        | `{AIDATA}/PLAN_SPEC.md`                                                    |
+| 語言規範套用原則 | `{AIDATA}/coding-rules.md`（C# / Python）                                  |
+| 前端性能規範     | `{AIDATA}/performance-rules.md`                                            |
 
-<!--
-### 命名慣例
-- 元件檔案：PascalCase（如 `UserList.component.ts`）
-- 服務檔案：kebab-case（如 `user-api.service.ts`）
-- ...
+**核心四原則：**
 
-### 目錄結構
-- ...
-
-### UI 框架 / 元件庫
-- ...
-
-### API 串接規範
-- ...
-
-### 狀態管理
-- ...
--->
+1. 編碼前先想清楚 — 列假設、查 `documents.md`、不確定先問
+2. 簡潔優先 — 只實作請求範圍，不預留未要求的抽象或功能
+3. 精準修改 — 每行 diff 須能追溯到請求
+4. 目標驅動 — 將任務轉為可驗證目標
 
 ---
 
-_本檔案將放置於專案根目錄下的 `AGENTS.md`，作為 Antigravity 自動載入的第一入口。_
+## 服務文件索引
+
+| 類型                        | 位置                            |
+| --------------------------- | ------------------------------- |
+| WebAPI 服務清單             | `{AIDATA}/webapi/_index.md`     |
+| BackgroundService 清單      | `{AIDATA}/service/_index.md`    |
+| 前端業務文件                | `{AIDATA}/frontend/_index.md`   |
+| DB Schema                   | `{AIDATA}/db/_index.md`         |
+| Confluence 跨服務           | `{AIDATA}/others/_index.md`     |
+| 運動賽事爬蟲                | `{AIDATA}/game/_index.md`       |
+| 股票專題                    | `{AIDATA}/stock/_index.md`      |
+| Confluence 全域（fallback） | `{AIDATA}/confluence/_index.md` |
+
+---
+
+## 前端規範
+
+- 各 repo 根目錄 `./.rules.md`（如 `./{project}/.rules.md`）
+- 業務規則：`{AIDATA}/frontend/_index.md` → 對應 `documents.md`
+
+---
+
+## 引導師
+
+| 引導師             | 觸發語                                  | 用途                                       |
+| ------------------ | --------------------------------------- | ------------------------------------------ |
+| Session Log        | `@session-log`、記錄今天、結束工作      | 一問一答記錄工作進度 → 存入 `session-log/` |
+| Summary            | `@summary`、整理摘要、做摘要            | 將此次對話紀錄整理成結構化摘要             |
+| Plan 訪談師        | `@plan-maker`、幫我寫 Plan、新需求      | 引導需求 → 產出符合 PLAN_SPEC 的 Plan      |
+| Plan 執行協調員    | `@plan-executor`、Resume、給我 Step 1   | 依 Plan 拆步實作，管理進度                 |
+| Task Understanding | `@task-helper`、幫我理解任務            | 查文件分析任務內容                         |
+| PR Review          | `@pr-review`、commit、push              | Commit Gate 檢查                           |
+| Repo Init          | `@repo-init`、初始化 repo               | 建立空白專案                               |
+| Service Teacher    | `@service-teacher`、這個 service 做什麼 | 解說服務職責與架構                         |
+| Arch Teacher       | `@arch-teacher`、整體架構               | 解說系統架構                               |
+| Lesson Learned     | `@lesson-learned`、記錄 bug             | 記錄經驗到 my-ai                           |
+| Debug Helper       | `@debug-helper`、遇到 bug               | 引導排查錯誤                               |
+| Perf Review        | `@perf-review`、效能檢查                | 效能分析 report                            |
+| Test Maker         | `@test-maker`、寫測試                   | 產出測試計畫與腳本                         |
+| AI Tester          | `@ai-tester`、執行測試                  | 執行測試腳本                               |
+
+> 完整 prompt 見 `{AIDATA}/systemprompts/*-prompt.md`（Session Log 見 `D:\GitLab\.session-log-prompt.md`，Summary 見 `D:\GitLab\summary-prompt.md`）
+
+---
+
+## 快速路徑替換
+
+本檔案中 `{AIDATA}` = `./my-ai`
